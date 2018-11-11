@@ -26,30 +26,36 @@
 			<div id="login">
 				<div id="student_login">
 					Student Login
-					<div id="google_sign_in" class="g-signin2" data-width="300" data-height="200" data-longtitle="true"></div>
-				  	<script>
-					    function onSuccess(googleUser) {
-					      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-					    }
-					    function onFailure(error) {
-					      console.log(error);
-					    }
-					    function renderButton() {
-					      gapi.signin2.render('my-signin2', {
-					        'scope': 'profile email',
-					        'width': 240,
-					        'height': 50,
-					        'longtitle': true,
-					        'theme': 'dark',
-					        'onsuccess': onSuccess,
-					        'onfailure': onFailure
-					      });
-					    }
-				  	</script>
-				  	<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+					<div id="my-signin2" class="google_sign_in"></div>
+					  	<script>
+						    function onSuccess(googleUser) {
+						      	console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+						      	console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+						        console.log('Name: ' + profile.getName());
+						        console.log('Image URL: ' + profile.getImageUrl());
+						        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+						    }
+						    function onFailure(error) {
+						      	console.log(error);
+						    }
+						    function renderButton() {
+						      	gapi.signin2.render('my-signin2', {
+							        'scope': 'profile email',
+							        'width': 153.6,
+							        'height': 32,
+							        'longtitle': true,
+							        'theme': 'dark',
+							        'onsuccess': onSuccess,
+							        'onfailure': onFailure
+						      	});
+						    }
+					  	</script>
+
+					  	<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
 				</div>
+				<div class="divider"></div>
 				<div id="faculty_login">
-					<div class="divider"></div>
 					Faculty Login
 					<div>
 						<div>

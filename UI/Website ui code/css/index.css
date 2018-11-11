@@ -45,7 +45,7 @@ body, html {
     bottom: 0;
     left: 0;
     right: 0;
-	overflow: hidden;
+	overflow-x: hidden;
 	background-color: white;
 	border-radius: 8px;
     width: 90%;
@@ -59,6 +59,7 @@ body, html {
     height: 601px;
 }
 #phone_idcard {
+	z-index: 1;
 	position: absolute;
 	margin-left: 22px;
 	margin-top: -44px;
@@ -96,13 +97,14 @@ body, html {
 	height: 100%;
 }
 #header {
+	z-index: 1;
 	display: flex;
 	width: 100%;
 	height: 200px;
 }
 #header_content {
 	display: flex;
-	margin-top: 100px;
+	margin-top: 80px;
 	padding-left: 26px;
 	padding-right: 88px;
 	justify-content: space-between;
@@ -165,9 +167,10 @@ button:hover {
 	width: 100%;
 }
 #student_login {
+	z-index: 1;
 	width: 80%;
 }
-#google_sign_in {
+#my-signin2 {
 	margin: 14px auto;
 }
 .divider {
@@ -175,10 +178,11 @@ button:hover {
 	margin-bottom: 24px;
 	background-color: #a5bbce;
 	opacity: 0.5;
-	width: 100%;
+	width: 80%;
 	height: 1px;
 }
 #faculty_login {
+	z-index: 1;
 	width: 80%;
 }
 input {
@@ -259,6 +263,9 @@ input:focus {
 	#google_sign_in {
 		margin-top: 34px;
 	}
+	.divider {
+		width: 70%;
+	}
 	#faculty_login {
 		width: 70%;
 	}
@@ -277,6 +284,9 @@ input:focus {
 }
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+	#container {
+		overflow: hidden;
+	}
 	#background { 
 	    background-image: url("../assets/background.svg");
 	}
@@ -331,6 +341,9 @@ input:focus {
 	}
 	#google_sign_in {
 		margin: 14px auto;
+	}
+	.divider {
+		width: 68%;
 	}
 	#faculty_login {
 		width: 68%;
