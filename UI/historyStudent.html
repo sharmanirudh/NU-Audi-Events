@@ -1,1474 +1,1597 @@
-
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Student</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="NIIT UNIVERSITY" />
-	<link rel="icon" href="img/favicon.png">
+    <link rel="icon" href="img/favicon.png">
     <link href="http://gatepass.niituniversity.in/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://gatepass.niituniversity.in/assets/css/new.css" rel="stylesheet">
     <!-- Datepicker CSS -->
     <!--<link rel="stylesheet" type="text/css" href="http://gatepass.niituniversity.in/assets/css/datepicker.css">-->
     <link href="http://gatepass.niituniversity.in/assets/css/mycalendar.css" rel="stylesheet">
     <link href="http://gatepass.niituniversity.in/assets/fonts/font-awesome.min.css" rel="stylesheet">
-  	<script src="http://gatepass.niituniversity.in/assets/js/jquery.js"></script>
-  	<script src="http://gatepass.niituniversity.in/assets/js/jquery.min.js"></script>
+    <script src="http://gatepass.niituniversity.in/assets/js/jquery.js"></script>
+    <script src="http://gatepass.niituniversity.in/assets/js/jquery.min.js"></script>
     <script src="http://gatepass.niituniversity.in/assets/js/bootstrap.min.js"></script>
-    
-   
-     
-
-	<script>
-  //javascript restrict inputs
-var digitsOnly = /[1234567890]/g;
-var integerOnly = /[0-9\.]/g;
-var alphaOnly = /[A-Za-z ]/g;
-    
-function restrictCharacters(myfield, e, restrictionType) {
-  if (!e) var e = window.event
-  if (e.keyCode) code = e.keyCode;
-  else if (e.which) code = e.which;
-  var character = String.fromCharCode(code);
-
-  // if they pressed esc... remove focus from field...
-  if (code==27) { this.blur(); return false; }
-  
-  // ignore if they are press other keys
-  // strange because code: 39 is the down key AND ' key...
-  // and DEL also equals .
-  if (!e.ctrlKey && code!=9 && code!=8 && code!=36 && code!=37 && code!=38 && (code!=39 || (code==39 && character=="'")) && code!=40) {
-    if (character.match(restrictionType)) {
-      return true;
-    } else {
-      return false;
-    }
-    
-  }
-}
-  </script>
-</head>
-<body>
-<script language=JavaScript>
-<!--
-
-//Disable right click script III- By Renigade (renigade@mediaone.net)
-//For full source code, visit http://www.dynamicdrive.com
-
-var message="";
-///////////////////////////////////
-function clickIE() {if (document.all) {(message);return false;}}
-function clickNS(e) {if 
-(document.layers||(document.getElementById&&!document.all)) {
-if (e.which==2||e.which==3) {(message);return false;}}}
-if (document.layers) 
-{document.captureEvents(Event.MOUSEDOWN);document.onmousedown=clickNS;}
-else{document.onmouseup=clickNS;document.oncontextmenu=clickIE;}
-
-document.oncontextmenu=new Function("return false")
-// --> 
-</script>
-<header>
+    <script>
+      //javascript restrict inputs
+      var digitsOnly = /[1234567890]/g;
+      var integerOnly = /[0-9\.]/g;
+      var alphaOnly = /[A-Za-z ]/g;
+        
+      function restrictCharacters(myfield, e, restrictionType) {
+      if (!e) var e = window.event
+      if (e.keyCode) code = e.keyCode;
+      else if (e.which) code = e.which;
+      var character = String.fromCharCode(code);
+      
+      // if they pressed esc... remove focus from field...
+      if (code==27) { this.blur(); return false; }
+      
+      // ignore if they are press other keys
+      // strange because code: 39 is the down key AND ' key...
+      // and DEL also equals .
+      if (!e.ctrlKey && code!=9 && code!=8 && code!=36 && code!=37 && code!=38 && (code!=39 || (code==39 && character=="'")) && code!=40) {
+        if (character.match(restrictionType)) {
+          return true;
+        } else {
+          return false;
+        }
+        
+      }
+      }
+    </script>
+  </head>
+  <body>
+    <script language=JavaScript>
+      <!--
+      
+      //Disable right click script III- By Renigade (renigade@mediaone.net)
+      //For full source code, visit http://www.dynamicdrive.com
+      
+      var message="";
+      ///////////////////////////////////
+      function clickIE() {if (document.all) {(message);return false;}}
+      function clickNS(e) {if 
+      (document.layers||(document.getElementById&&!document.all)) {
+      if (e.which==2||e.which==3) {(message);return false;}}}
+      if (document.layers) 
+      {document.captureEvents(Event.MOUSEDOWN);document.onmousedown=clickNS;}
+      else{document.onmouseup=clickNS;document.oncontextmenu=clickIE;}
+      
+      document.oncontextmenu=new Function("return false")
+      // --> 
+    </script>
+    <header>
       <a href="http://gatepass.niituniversity.in/" class="logo">
-        <img src="http://gatepass.niituniversity.in/assets/img/logo2.gif" alt="Logo"/>
+      <img src="http://gatepass.niituniversity.in/assets/img/logo2.gif" alt="Logo"/>
       </a>
       <div class="pull-right">
         <ul id="mini-nav" class="clearfix">
-        <li class="list-box user-profile" style="color:#7f1f22;">
-				<h6>
-					Login Date Friday 26th of October 2018					<div>&nbsp;</div>
-					Welcome	ANIRUDH SHARMA				</h6>	
-              </li>
-        </ul>          
+          <li class="list-box user-profile" style="color:#7f1f22;">
+            <h6>
+              Login Date Friday 26th of October 2018          
+              <div>&nbsp;</div>
+              Welcome ANIRUDH SHARMA        
+            </h6>
+          </li>
+        </ul>
       </div>
     </header>
-  <div class="dashboard-container">
-    <div class="container-fluid">
-      <div id='cssmenu'>
-           <ul>
-             <li >
-               <a href='http://gatepass.niituniversity.in/'><i class="fa fa-anchor"></i>Dashboard</a>
-
-             </li>
-              <!-- <li >
-               <a href="http://gatepass.niituniversity.in/index.php/GatePassController/viewStudentProfile"><i class="fa fa-info"></i>Profile</a>
-
-             </li> -->
-             <li >
-               <a href='http://gatepass.niituniversity.in/index.php/GatePassController/profileStudent'><i class="fa fa-user"></i>My Profile</a>
-             </li>
-             <li >
-               <a href="#" >
-                 <i class="fa fa-car "></i>
-                  Gatepass
-               </a>
+    <div class="dashboard-container">
+      <div class="container-fluid">
+        <div id='cssmenu'>
+          <ul>
+            <li >
+              <a href='http://gatepass.niituniversity.in/'><i class="fa fa-anchor"></i>Dashboard</a>
+            </li>
+            <!-- <li >
+              <a href="http://gatepass.niituniversity.in/index.php/GatePassController/viewStudentProfile"><i class="fa fa-info"></i>Profile</a>
+              
+              </li> -->
+            <li >
+              <a href='http://gatepass.niituniversity.in/index.php/GatePassController/profileStudent'><i class="fa fa-user"></i>My Profile</a>
+            </li>
+            <li >
+              <a href="#" >
+              <i class="fa fa-car "></i>
+              Gatepass
+              </a>
               <ul>
-                  <li><a href='http://gatepass.niituniversity.in/index.php/GatePassController/localflexibleformStudent'>Local Flexible</a></li>
-                  <li><a href='http://gatepass.niituniversity.in/index.php/GatePassController/localfixedformStudent'>Local Fixed</a></li>
-                  <li><a href='http://gatepass.niituniversity.in/index.php/GatePassController/outstationformStudent'>Outstation</a></li>        
-                  <li><a href='http://gatepass.niituniversity.in/index.php/GatePassController/nonreturnableformStudent'>Non-returnable</a></li>
-				  <li><a href='http://gatepass.niituniversity.in/index.php/GatePassController/emergencyformStudent'>Emergency</a></li>
-                 <!--  <li><a href='http://gatepass.niituniversity.in/index.php/GatePassController/semesterbreakgatepassformStudent'>Semester-Break</a></li> -->
-                  
-             </ul>
-
-
-             </li>
-             <li  >
-               <a href="#">
-                 <i class="fa fa-users"></i>
-                  Visitors
-               </a>
-               <ul>
-                  <li><a href='http://gatepass.niituniversity.in/index.php/GatePassController/visitorformStudent'>Apply Gatepass</a></li>
-                  <li><a href='http://gatepass.niituniversity.in/index.php/GatePassController/visitorhistoryStudent'>Check Request</a></li>
-               </ul>
-             </li>
-           <li class="active">
-             <a href='http://gatepass.niituniversity.in/index.php/GatePassController/historyStudent '><i class="fa fa-backward "></i>Gatepasses</a>
-           </li>
+                <li><a href='http://gatepass.niituniversity.in/index.php/GatePassController/localflexibleformStudent'>Local Flexible</a></li>
+                <li><a href='http://gatepass.niituniversity.in/index.php/GatePassController/localfixedformStudent'>Local Fixed</a></li>
+                <li><a href='http://gatepass.niituniversity.in/index.php/GatePassController/outstationformStudent'>Outstation</a></li>
+                <li><a href='http://gatepass.niituniversity.in/index.php/GatePassController/nonreturnableformStudent'>Non-returnable</a></li>
+                <li><a href='http://gatepass.niituniversity.in/index.php/GatePassController/emergencyformStudent'>Emergency</a></li>
+                <!--  <li><a href='http://gatepass.niituniversity.in/index.php/GatePassController/semesterbreakgatepassformStudent'>Semester-Break</a></li> -->
+              </ul>
+            </li>
+            <li  >
+              <a href="#">
+              <i class="fa fa-users"></i>
+              Visitors
+              </a>
+              <ul>
+                <li><a href='http://gatepass.niituniversity.in/index.php/GatePassController/visitorformStudent'>Apply Gatepass</a></li>
+                <li><a href='http://gatepass.niituniversity.in/index.php/GatePassController/visitorhistoryStudent'>Check Request</a></li>
+              </ul>
+            </li>
+            <li class="active">
+              <a href='http://gatepass.niituniversity.in/index.php/GatePassController/historyStudent '><i class="fa fa-backward "></i>Gatepasses</a>
+            </li>
+            <!--<li class="hidden-sm">
+              <a href="calendar.html">
+                <i class="fa fa-calendar"></i>
+                Calendar
+              </a>
+              </li>-->
+            <li >
+              <a href="http://gatepass.niituniversity.in/index.php/GatePassController/infoBoxStudent">
+              <i class="fa fa-info "></i>
+              Info
+              </a>
+            </li>
+            <li >
+              <a href="http://gatepass.niituniversity.in/index.php/GatePassController/logout">
+              <i class="fa fa-globe"></i>
+              Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- Top Nav End -->
+        <div class="dashboard-wrapper-lg">
+          <script>
+            //window.setTimeout(function(){location.reload()},20000);
+            
+            var convertDate = function(usDate) {
+            var dateParts = usDate.split(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+            return dateParts[3] + "-" + dateParts[1] + "-" + dateParts[2];
+            }
+            
+               function append() {
+                   var link = document.getElementById('export_button');
+              var fromdate = document.getElementById('fromdate').value;
+              var todate = document.getElementById('todate').value;
+              fromdate = convertDate(fromdate);
+              todate = convertDate(todate);
+                   link.href = "http://gatepass.niituniversity.in/index.php/GatePassController/sDatewisehistory_ExcelDownload/"+fromdate+"/"+todate;
+               }
+            
+            
+            $( function() {
+             var dateFormat = "mm/dd/yy",
+               from = $( "#fromdate" )
+                 .datepicker({
+                   defaultDate: "+1w",
+                   changeMonth: true
+                 })
+                 .on( "change", function() {
+                   to.datepicker( "option", "minDate", getDate( this ) );
+                 }),
+               to = $( "#todate" ).datepicker({
+                 defaultDate: "+1w",
+                 changeMonth: true
+               })
+               .on( "change", function() {
+                 from.datepicker( "option", "maxDate", getDate( this ) );
+               });
+            
+             function getDate( element ) {
+               var date;
+               try {
+                 date = $.datepicker.parseDate( dateFormat, element.value );
+               } catch( error ) {
+                 date = null;
+               }
+            
+               return date;
+             }
+            } );
              
-             <!--<li class="hidden-sm">
-               <a href="calendar.html">
-                 <i class="fa fa-calendar"></i>
-                 Calendar
-               </a>
-             </li>-->
-             <li >
-               <a href="http://gatepass.niituniversity.in/index.php/GatePassController/infoBoxStudent">
-                 <i class="fa fa-info "></i>
-                  Info
-               </a>
-             </li>
-             <li >
-               <a href="http://gatepass.niituniversity.in/index.php/GatePassController/logout">
-                 <i class="fa fa-globe"></i>
-                  Logout
-               </a>
-             </li>
-           </ul>
-         </div>
-         <!-- Top Nav End -->
-<div class="dashboard-wrapper-lg">
-<script>
-	//window.setTimeout(function(){location.reload()},20000);
-
-	var convertDate = function(usDate) {
-	var dateParts = usDate.split(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
-	return dateParts[3] + "-" + dateParts[1] + "-" + dateParts[2];
-	}
-	
-    function append() {
-        var link = document.getElementById('export_button');
-		var fromdate = document.getElementById('fromdate').value;
-		var todate = document.getElementById('todate').value;
-		fromdate = convertDate(fromdate);
-		todate = convertDate(todate);
-        link.href = "http://gatepass.niituniversity.in/index.php/GatePassController/sDatewisehistory_ExcelDownload/"+fromdate+"/"+todate;
-    }
-
-	
-$( function() {
-  var dateFormat = "mm/dd/yy",
-    from = $( "#fromdate" )
-      .datepicker({
-        defaultDate: "+1w",
-        changeMonth: true
-      })
-      .on( "change", function() {
-        to.datepicker( "option", "minDate", getDate( this ) );
-      }),
-    to = $( "#todate" ).datepicker({
-      defaultDate: "+1w",
-      changeMonth: true
-    })
-    .on( "change", function() {
-      from.datepicker( "option", "maxDate", getDate( this ) );
-    });
-
-  function getDate( element ) {
-    var date;
-    try {
-      date = $.datepicker.parseDate( dateFormat, element.value );
-    } catch( error ) {
-      date = null;
-    }
-
-    return date;
-  }
-} );
-  </script>
-<div class="row">
-  <div class="col-lg-12 col-md-12">
-	<form class="form-horizontal" action="http://gatepass.niituniversity.in/index.php/GatePassController/sDatewisehistory" method="post" class="form-inline" id="gatepass_history">
-			<table class="table">
-			<tbody>
-              <tr>
-              <td style="width:30%">
-              Please Select Dates For List Requests Within Tenure
-              </td>
-				<td style="width:70%;">
-              <div class="col-lg-12">
-                  <div class="form-group">
-                    <div class="col-lg-4">
-                    <input id="fromdate" readonly name="sdate" type="text" class="form-control"  onchange="append();" placeholder="From Date">
-                    </div>
-                    <div class="col-lg-4">
-                    <input id="todate" readonly name="edate" type="text" class="form-control"  onchange="append();" placeholder="To Date">
-                    </div>
-                    <div class="col-lg-4">
-                    <button type="submit" class="btn btn-primary">
-						&nbsp;<i class="fa fa-list-ol"></i>&nbsp;&nbsp;List All</button>
-					<!--<button id="export_button" class="btn btn-primary">Excel Export</button>-->
-					<a id="export_button" class="btn btn-primary" target='_blank'>
-						&nbsp;<i class="fa fa-table"></i>&nbsp;&nbsp;Excel Export</a>
-                    </div>
+          </script>
+          <div class="row">
+            <div class="col-lg-12 col-md-12">
+              <form class="form-horizontal" action="http://gatepass.niituniversity.in/index.php/GatePassController/sDatewisehistory" method="post" class="form-inline" id="gatepass_history">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td style="width:30%">
+                        Please Select Dates For List Requests Within Tenure
+                      </td>
+                      <td style="width:70%;">
+                        <div class="col-lg-12">
+                          <div class="form-group">
+                            <div class="col-lg-4">
+                              <input id="fromdate" readonly name="sdate" type="text" class="form-control"  onchange="append();" placeholder="From Date">
+                            </div>
+                            <div class="col-lg-4">
+                              <input id="todate" readonly name="edate" type="text" class="form-control"  onchange="append();" placeholder="To Date">
+                            </div>
+                            <div class="col-lg-4">
+                              <button type="submit" class="btn btn-primary">
+                              &nbsp;<i class="fa fa-list-ol"></i>&nbsp;&nbsp;List All</button>
+                              <!--<button id="export_button" class="btn btn-primary">Excel Export</button>-->
+                              <a id="export_button" class="btn btn-primary" target='_blank'>
+                              &nbsp;<i class="fa fa-table"></i>&nbsp;&nbsp;Excel Export</a>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-md-12">
+              <div class="widget">
+                <div class="widget-body">
+                  <div class ="table-responsive">
+                    <table class="table  table-striped table-bordered table-hover no-margin">
+                      <thead>
+                        <tr>
+                          <td colspan=10 class="panel-linkedin">
+                            <strong>All Gatepass Requests</strong>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th style="width:5%">
+                            S.No
+                          </th>
+                          <th style="width:10%" >
+                            Attendance time
+                          </th>
+                          <th style="width:15%">
+                            Program
+                          </th>
+                          <th style="width:15%">
+                            Batch
+                          </th>
+                          <th style="width:10%" >
+                            E-mail
+                          </th>
+                          <th style="width:15%" >
+                            Name
+                          </th>
+                          <th style="width:10%">
+                            Status
+                          </th>
+                          <th style="width:20%">
+                          </th>
+                          <!-- <th style="width:30%" class="hidden-xs">
+                            Remark
+                            </th> -->
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            1              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            02-11-2018 | 01:30:00 PM            
+                          </td>
+                          <td>
+                            12-11-2018 | 11:30:00 AM            
+                          </td>
+                          <td>
+                            Shail Deen            
+                          </td>
+                          <td>
+                            DIWALI            
+                          </td>
+                          <td>              
+                            <font color='green'>APPROVED</font>                
+                          </td>
+                          <td>
+                            <!-- <a class = "btn btn-primary btn-xs" href =
+                              "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/ckV2R1gvZTZ3anVpS2xibjJBZHRxUT09">OPEN</a>&nbsp;
+                            &nbsp;&nbsp; -->
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                            <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="">Cancel request</h4>
+                                  </div>
+                                  <form action = "sCancelRequest/77442" method ="post">
+                                    <div class="modal-body">
+                                      <div class = "form-group">
+                                        <label>Reason for Cancellation</label>
+                                        <textarea name = "reason" class = "form-control" row = "5" required></textarea>
+                                      </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                      <button type="sumbit"  class="btn btn-danger">Cancel</button>
+                                    </div>
+                                </div>
+                                </form>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            2              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            13-10-2018 | 05:47:00 PM            
+                          </td>
+                          <td>
+                            15-10-2018 | 08:00:00 AM            
+                          </td>
+                          <td>
+                            Balvant Chouhan            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            3              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            29-09-2018 | 05:38:00 PM            
+                          </td>
+                          <td>
+                            01-10-2018 | 08:00:00 AM            
+                          </td>
+                          <td>
+                            Shail Deen            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            4              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            13-09-2018 | 11:45:00 AM            
+                          </td>
+                          <td>
+                            17-09-2018 | 11:30:00 AM            
+                          </td>
+                          <td>
+                            Balvant Chouhan            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            5              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            31-08-2018 | 05:03:00 PM            
+                          </td>
+                          <td>
+                            03-09-2018 | 08:00:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            6              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            16-08-2018 | 05:20:00 PM            
+                          </td>
+                          <td>
+                            20-08-2018 | 08:00:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            7              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            15-08-2018 | 07:17:00 PM            
+                          </td>
+                          <td>
+                            20-08-2018 | 08:00:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='red'>CANCELLED</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            8              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            11-08-2018 | 12:55:00 PM            
+                          </td>
+                          <td>
+                            13-08-2018 | 08:00:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            HOME            
+                          </td>
+                          <td>              
+                            <i class='fa fa-exclamation-triangle'></i> &nbsp;&nbsp;EXPIRE                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            9              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            21-05-2018 | 03:11:00 PM            
+                          </td>
+                          <td>
+                            01-08-2018 | 08:00:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            SUMMER HOLIDAYS            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            10              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            04-05-2018 | 10:16:00 PM            
+                          </td>
+                          <td>
+                            07-05-2018 | 08:00:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            11              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            20-04-2018 | 12:43:00 PM            
+                          </td>
+                          <td>
+                            23-04-2018 | 08:00:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            12              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            05-04-2018 | 11:30:00 AM            
+                          </td>
+                          <td>
+                            09-04-2018 | 09:30:00 AM            
+                          </td>
+                          <td>
+                            Shail Deen            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            13              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            16-03-2018 | 05:09:00 PM            
+                          </td>
+                          <td>
+                            19-03-2018 | 08:00:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            14              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            16-03-2018 | 05:08:00 PM            
+                          </td>
+                          <td>
+                            19-03-2018 | 08:30:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='red'>CANCELLED</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            15              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            28-02-2018 | 12:30:00 PM            
+                          </td>
+                          <td>
+                            05-03-2018 | 11:30:00 AM            
+                          </td>
+                          <td>
+                            Shail Deen            
+                          </td>
+                          <td>
+                            HOLI            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            16              </span>
+                          </td>
+                          <td>
+                            Local Flexible            
+                          </td>
+                          <td>
+                            27-02-2018 | 12:30:00 PM            
+                          </td>
+                          <td>
+                            27-02-2018 | 11:30:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            HOLI            
+                          </td>
+                          <td>              
+                            <font color='red'>REJECTED</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            17              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            14-02-2018 | 04:07:00 PM            
+                          </td>
+                          <td>
+                            19-02-2018 | 10:30:00 AM            
+                          </td>
+                          <td>
+                            Shail Deen            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            18              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            14-02-2018 | 04:05:00 PM            
+                          </td>
+                          <td>
+                            19-02-2018 | 10:30:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='red'>CANCELLED</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            19              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            14-02-2018 | 12:30:00 PM            
+                          </td>
+                          <td>
+                            19-02-2018 | 10:30:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='red'>CANCELLED</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            20              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            03-02-2018 | 12:00:00 AM            
+                          </td>
+                          <td>
+                            05-02-2018 | 08:30:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            MIT SPORTS FEST            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            21              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            25-01-2018 | 12:30:00 PM            
+                          </td>
+                          <td>
+                            29-01-2018 | 08:30:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            22              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            26-01-2018 | 12:30:00 PM            
+                          </td>
+                          <td>
+                            29-01-2018 | 08:30:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='red'>CANCELLED</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            23              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            12-01-2018 | 03:30:00 PM            
+                          </td>
+                          <td>
+                            15-01-2018 | 08:30:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            24              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            12-12-2017 | 11:56:00 PM            
+                          </td>
+                          <td>
+                            08-01-2018 | 12:30:00 PM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            SEMESTER BREAK            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            25              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            24-11-2017 | 05:38:00 PM            
+                          </td>
+                          <td>
+                            27-11-2017 | 08:30:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            26              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            10-11-2017 | 01:30:00 PM            
+                          </td>
+                          <td>
+                            13-11-2017 | 01:30:00 PM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            27              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            01-11-2017 | 03:30:00 PM            
+                          </td>
+                          <td>
+                            06-11-2017 | 11:30:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            28              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            13-10-2017 | 12:00:00 PM            
+                          </td>
+                          <td>
+                            23-10-2017 | 10:30:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            DIWALI            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            29              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            29-09-2017 | 03:15:00 PM            
+                          </td>
+                          <td>
+                            03-10-2017 | 08:30:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            30              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            29-09-2017 | 02:50:00 PM            
+                          </td>
+                          <td>
+                            03-10-2017 | 03:00:00 PM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='red'>CANCELLED</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            31              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            13-09-2017 | 11:00:00 AM            
+                          </td>
+                          <td>
+                            18-09-2017 | 10:00:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            32              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            02-09-2017 | 06:22:00 AM            
+                          </td>
+                          <td>
+                            04-09-2017 | 08:00:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            33              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            18-08-2017 | 05:55:00 PM            
+                          </td>
+                          <td>
+                            21-08-2017 | 08:00:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            34              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            18-08-2017 | 05:52:00 PM            
+                          </td>
+                          <td>
+                            21-08-2017 | 08:30:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='red'>CANCELLED</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            35              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            04-08-2017 | 04:00:00 PM            
+                          </td>
+                          <td>
+                            08-08-2017 | 08:30:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            36              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            04-08-2017 | 04:30:00 PM            
+                          </td>
+                          <td>
+                            08-08-2017 | 11:30:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            RAKHI            
+                          </td>
+                          <td>              
+                            <font color='red'>CANCELLED</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            37              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            12-05-2017 | 12:00:00 PM            
+                          </td>
+                          <td>
+                            01-08-2017 | 10:30:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            SUMMER BREAK            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            38              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            28-04-2017 | 11:30:00 PM            
+                          </td>
+                          <td>
+                            01-05-2017 | 08:30:00 AM            
+                          </td>
+                          <td>
+                            Shail Deen            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            39              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            28-04-2017 | 10:55:00 PM            
+                          </td>
+                          <td>
+                            08-05-2017 | 10:00:00 AM            
+                          </td>
+                          <td>
+                            Shail Deen            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='red'>CANCELLED</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            40              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            28-04-2017 | 12:00:00 PM            
+                          </td>
+                          <td>
+                            01-05-2017 | 10:30:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            VISIT TO HOME            
+                          </td>
+                          <td>              
+                            <font color='red'>REJECTED</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            41              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            13-04-2017 | 05:45:00 PM            
+                          </td>
+                          <td>
+                            17-04-2017 | 08:00:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            42              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            06-04-2017 | 02:00:00 PM            
+                          </td>
+                          <td>
+                            10-04-2017 | 10:00:00 AM            
+                          </td>
+                          <td>
+                            Dhirendra Rathore            
+                          </td>
+                          <td>
+                            DOCTOR            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            43              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            24-03-2017 | 12:00:00 PM            
+                          </td>
+                          <td>
+                            28-03-2017 | 10:00:00 AM            
+                          </td>
+                          <td>
+                            <u>AutoApproval</u>            
+                          </td>
+                          <td>
+                            VISIT TO HOME            
+                          </td>
+                          <td>              
+                            <font color='red'>REJECTED</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            44              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            10-03-2017 | 12:30:00 PM            
+                          </td>
+                          <td>
+                            20-03-2017 | 10:30:00 AM            
+                          </td>
+                          <td>
+                            <u>AutoApproval</u>            
+                          </td>
+                          <td>
+                            GOING HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="name">
+                            45              </span>
+                          </td>
+                          <td>
+                            Outstation            
+                          </td>
+                          <td>
+                            23-02-2017 | 12:00:00 PM            
+                          </td>
+                          <td>
+                            27-02-2017 | 10:00:00 AM            
+                          </td>
+                          <td>
+                            <u>AutoApproval</u>            
+                          </td>
+                          <td>
+                            VISIT TO HOME            
+                          </td>
+                          <td>              
+                            <font color='green'>CHECKEDIN</font>                
+                          </td>
+                          <td>
+                            <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
+                              data-toggle="modal">MARK ABSENT</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-              </div>    
-              </td>
-              </tr>
-          </tbody>    
-         </table> 
-    </form> 
-</div>
-</div>
-<div class="row">
-<div class="col-lg-12 col-md-12">
-  <div class="widget">
-    <div class="widget-body">
-      <div class ="table-responsive">
-      <table class="table  table-striped table-bordered table-hover no-margin">
-        <thead>
-          <tr>
-            <td colspan=10 class="panel-linkedin">
-              <strong>All Gatepass Requests</strong>
-            </td>
-          </tr>
-          <tr>
-            <th style="width:5%">
-              S.No
-            </th>
-            <th style="width:10%" >
-              Gatepass Type
-            </th>
-            <th style="width:15%">
-              Departure (Actual)
-            </th>
-			<th style="width:15%">
-              Arrival (Actual)
-            </th>
-            <th style="width:10%" >
-              Requested to
-            </th>
-            <th style="width:15%" >
-              Reason
-            </th>
-            <th style="width:10%">
-              Status
-            </th>
-            <th style="width:20%">
-
-            </th>
-            <!-- <th style="width:30%" class="hidden-xs">
-              Remark
-            </th> -->
-          </tr>
-        </thead>
-        <tbody>
-          
-          <tr>
-            <td>
-              <span class="name">
-                1              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              02-11-2018 | 01:30:00 PM            </td>
-			<td>
-                12-11-2018 | 11:30:00 AM            </td>
-            <td>
-              Shail Deen            </td>
-            <td>
-              DIWALI            </td>
-            <td>              
-            <font color='green'>APPROVED</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/NVZROU1yRFN1L1lpM0R5aTdjWDhPZz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-              <a class = "btn btn-danger btn-xs" href = "#" data-target ="#cancelModal"
-                data-toggle="modal">CANCEL</a><div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="">Cancel request</h4>
-                      </div>
-                      <form action = "sCancelRequest/77442" method ="post">
-                      <div class="modal-body">
-                        <div class = "form-group">
-                        <label>Reason for Cancellation</label>
-                        <textarea name = "reason" class = "form-control" row = "5" required></textarea>
-                      </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="sumbit"  class="btn btn-danger">Cancel</button>
-                      </div>
-                    </div>
-                  </form>
-                  </div>
-                </div>            </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                2              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              13-10-2018 | 05:47:00 PM            </td>
-			<td>
-                15-10-2018 | 08:00:00 AM            </td>
-            <td>
-              Balvant Chouhan            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/ckV2R1gvZTZ3anVpS2xibjJBZHRxUT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                3              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              29-09-2018 | 05:38:00 PM            </td>
-			<td>
-                01-10-2018 | 08:00:00 AM            </td>
-            <td>
-              Shail Deen            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/L0hjMTYrWThFNlljUFl5aGJXNW5sZz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                4              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              13-09-2018 | 11:45:00 AM            </td>
-			<td>
-                17-09-2018 | 11:30:00 AM            </td>
-            <td>
-              Balvant Chouhan            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/aDlMVWxtQkZJNnZpampQVzRYOUJhUT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                5              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              31-08-2018 | 05:03:00 PM            </td>
-			<td>
-                03-09-2018 | 08:00:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/WmVTelU1a1ZyTlYwbTFqYzl0QytkQT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                6              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              16-08-2018 | 05:20:00 PM            </td>
-			<td>
-                20-08-2018 | 08:00:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/aGJncUIyd0lla0FqTzdteEdIZEZldz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                7              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              15-08-2018 | 07:17:00 PM            </td>
-			<td>
-                20-08-2018 | 08:00:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='red'>CANCELLED</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/aGVGMWcwUWgya2lKWmRsa2VvZ3VGZz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                8              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              11-08-2018 | 12:55:00 PM            </td>
-			<td>
-                13-08-2018 | 08:00:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              HOME            </td>
-            <td>              
-            <i class='fa fa-exclamation-triangle'></i> &nbsp;&nbsp;EXPIRE                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/VGFjME5ObW1JcXE2OFBjcFpEZmVUZz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                9              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              21-05-2018 | 03:11:00 PM            </td>
-			<td>
-                01-08-2018 | 08:00:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              SUMMER HOLIDAYS            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/aEdPb2tCWHM2R0dGWFd6UnVwemNudz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                10              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              04-05-2018 | 10:16:00 PM            </td>
-			<td>
-                07-05-2018 | 08:00:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/ckVxTEVHdkRmVmhDWDZaRjFXd3RhZz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                11              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              20-04-2018 | 12:43:00 PM            </td>
-			<td>
-                23-04-2018 | 08:00:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/dmxvR1psVmVPNDY1cndzNGtva0hFUT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                12              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              05-04-2018 | 11:30:00 AM            </td>
-			<td>
-                09-04-2018 | 09:30:00 AM            </td>
-            <td>
-              Shail Deen            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/YmNRdjhwNnJQcC9sMW9sWXFPVGtCZz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                13              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              16-03-2018 | 05:09:00 PM            </td>
-			<td>
-                19-03-2018 | 08:00:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/dmh2ZzZ5TFEwOWhzSlpRK05rWnBPQT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                14              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              16-03-2018 | 05:08:00 PM            </td>
-			<td>
-                19-03-2018 | 08:30:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='red'>CANCELLED</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/T3FxN1Nsa1FjNlI0dGE4N2FpbURQdz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                15              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              28-02-2018 | 12:30:00 PM            </td>
-			<td>
-                05-03-2018 | 11:30:00 AM            </td>
-            <td>
-              Shail Deen            </td>
-            <td>
-              HOLI            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/eEdBYXFNVkNGY0Z3Nm9hUXJhc1hDdz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                16              </span>
-            </td>
-            <td>
-              Local Flexible            </td>
-            <td>
-              27-02-2018 | 12:30:00 PM            </td>
-			<td>
-                27-02-2018 | 11:30:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              HOLI            </td>
-            <td>              
-            <font color='red'>REJECTED</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/RFk4SzBWS2l3bnBZVzBESVI0OXpXdz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                17              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              14-02-2018 | 04:07:00 PM            </td>
-			<td>
-                19-02-2018 | 10:30:00 AM            </td>
-            <td>
-              Shail Deen            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/eTVVemF1MER5YVZvSHpjaERBa2R0dz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                18              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              14-02-2018 | 04:05:00 PM            </td>
-			<td>
-                19-02-2018 | 10:30:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='red'>CANCELLED</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/cVhUMktDSUNVSmhRbTArelJNL3dJQT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                19              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              14-02-2018 | 12:30:00 PM            </td>
-			<td>
-                19-02-2018 | 10:30:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='red'>CANCELLED</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/M3pHMXhtOEhqTnVHSy9HcmVoTmtiQT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                20              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              03-02-2018 | 12:00:00 AM            </td>
-			<td>
-                05-02-2018 | 08:30:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              MIT SPORTS FEST            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/VUJZTEx2N0REV1FvMUlDMDFtMnlaZz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                21              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              25-01-2018 | 12:30:00 PM            </td>
-			<td>
-                29-01-2018 | 08:30:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/cmU2R0lyc2xpdkpET012RmY5NlBsdz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                22              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              26-01-2018 | 12:30:00 PM            </td>
-			<td>
-                29-01-2018 | 08:30:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='red'>CANCELLED</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/OXFQUXVUc01oVUppMDVJNXViSnpmUT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                23              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              12-01-2018 | 03:30:00 PM            </td>
-			<td>
-                15-01-2018 | 08:30:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/QTkwTDd6Mm1CYVBqakdWdTNBOW9KUT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                24              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              12-12-2017 | 11:56:00 PM            </td>
-			<td>
-                08-01-2018 | 12:30:00 PM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              SEMESTER BREAK            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/VVdpYWpaVFphaGc5SGRKbDdNdFN6Zz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                25              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              24-11-2017 | 05:38:00 PM            </td>
-			<td>
-                27-11-2017 | 08:30:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/QUdYbXc1UlI4S2dwdnZDUzQvTXRZZz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                26              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              10-11-2017 | 01:30:00 PM            </td>
-			<td>
-                13-11-2017 | 01:30:00 PM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/R0dNWEpJSzVyY0g5NWtvNWNFSjhaQT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                27              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              01-11-2017 | 03:30:00 PM            </td>
-			<td>
-                06-11-2017 | 11:30:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/WlhKZnh2NHo3MVRWcU9UQ1p6eVlkQT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                28              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              13-10-2017 | 12:00:00 PM            </td>
-			<td>
-                23-10-2017 | 10:30:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              DIWALI            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/UFdoU3NJTDdtMTU4N0d4dFd0MHV2UT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                29              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              29-09-2017 | 03:15:00 PM            </td>
-			<td>
-                03-10-2017 | 08:30:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/eFpFTE1Lc0QrQU1RRkdFblVsT2RMUT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                30              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              29-09-2017 | 02:50:00 PM            </td>
-			<td>
-                03-10-2017 | 03:00:00 PM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='red'>CANCELLED</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/ZXh0aTFHUzZ6YndFTjcyeHJEVUtqUT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                31              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              13-09-2017 | 11:00:00 AM            </td>
-			<td>
-                18-09-2017 | 10:00:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/SUdXdnJSaG5jZHZERkRpUzA3ODgzQT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                32              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              02-09-2017 | 06:22:00 AM            </td>
-			<td>
-                04-09-2017 | 08:00:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/bWxlcVl0dU5TUnlEbUFWTFpaY2tuQT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                33              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              18-08-2017 | 05:55:00 PM            </td>
-			<td>
-                21-08-2017 | 08:00:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/S3NacFVVMC9rU01nU01LVEErTU9ZUT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                34              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              18-08-2017 | 05:52:00 PM            </td>
-			<td>
-                21-08-2017 | 08:30:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='red'>CANCELLED</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/SjI0RzdsZTYxK2F1dTZNanB6VUVldz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                35              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              04-08-2017 | 04:00:00 PM            </td>
-			<td>
-                08-08-2017 | 08:30:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/anlob29RL3EzQVJjVEd6YW9QYTE1dz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                36              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              04-08-2017 | 04:30:00 PM            </td>
-			<td>
-                08-08-2017 | 11:30:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              RAKHI            </td>
-            <td>              
-            <font color='red'>CANCELLED</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/S1dOcDBIdjJ5K0ZxUmcvV3NGSDNpUT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                37              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              12-05-2017 | 12:00:00 PM            </td>
-			<td>
-                01-08-2017 | 10:30:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              SUMMER BREAK            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/UnZ4OXk2NmFLRUVQcXh6MlhnMHBHZz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                38              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              28-04-2017 | 11:30:00 PM            </td>
-			<td>
-                01-05-2017 | 08:30:00 AM            </td>
-            <td>
-              Shail Deen            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/V0JkUDRENzc4QnY4UmJSQWpqR3V4dz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                39              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              28-04-2017 | 10:55:00 PM            </td>
-			<td>
-                08-05-2017 | 10:00:00 AM            </td>
-            <td>
-              Shail Deen            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='red'>CANCELLED</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/K0YyM1BSQ0dMcFFrdTJRVktibG9SUT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                40              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              28-04-2017 | 12:00:00 PM            </td>
-			<td>
-                01-05-2017 | 10:30:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              VISIT TO HOME            </td>
-            <td>              
-            <font color='red'>REJECTED</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/azFrQ2FKV3FOZFA2TmZKUFY0OURxdz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                41              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              13-04-2017 | 05:45:00 PM            </td>
-			<td>
-                17-04-2017 | 08:00:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/dTExN3krMjBCNUJIMG5sZGgxUXhYQT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                42              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              06-04-2017 | 02:00:00 PM            </td>
-			<td>
-                10-04-2017 | 10:00:00 AM            </td>
-            <td>
-              Dhirendra Rathore            </td>
-            <td>
-              DOCTOR            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/WTlpbjBPUEhUTmw1dnZ6UE00dDVkQT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                43              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              24-03-2017 | 12:00:00 PM            </td>
-			<td>
-                28-03-2017 | 10:00:00 AM            </td>
-            <td>
-              <u>AutoApproval</u>            </td>
-            <td>
-              VISIT TO HOME            </td>
-            <td>              
-            <font color='red'>REJECTED</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/OGtENEwrUVdyZE10cHNpZ0RyOHh3dz09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                44              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              10-03-2017 | 12:30:00 PM            </td>
-			<td>
-                20-03-2017 | 10:30:00 AM            </td>
-            <td>
-              <u>AutoApproval</u>            </td>
-            <td>
-              GOING HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/YXFNenZ5ZStEZkl1eitDQ1dHWktmQT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-        
-          <tr>
-            <td>
-              <span class="name">
-                45              </span>
-            </td>
-            <td>
-              Outstation            </td>
-            <td>
-              23-02-2017 | 12:00:00 PM            </td>
-			<td>
-                27-02-2017 | 10:00:00 AM            </td>
-            <td>
-              <u>AutoApproval</u>            </td>
-            <td>
-              VISIT TO HOME            </td>
-            <td>              
-            <font color='green'>CHECKEDIN</font>                
-            </td>
-            <td>
-              <a class = "btn btn-primary btn-xs" href =
-                "http://gatepass.niituniversity.in/index.php/GatePassController/sRequestDetail/UU5kYVA1NEQraUl1RUlSbU4wZy9HQT09">OPEN</a>&nbsp;
-                &nbsp;&nbsp;
-                          </td>
-          </tr>
-                 </tbody>
-      </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer>
+          <p>NIIT UNIVERSITY Version 2.1</p>
+        </footer>
+      </div>
     </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-
-
-
-
-<footer>
-       <p>NIIT UNIVERSITY Version 2.1</p>
-</footer>
-</div>
-</div>
- <!-- Main Container end -->
-
-
- <script src="http://gatepass.niituniversity.in/assets/js/jquery.scrollUp.js"></script>
- <!-- jQuery UI JS -->
- <script src="http://gatepass.niituniversity.in/assets/js/jquery-ui-v1.10.3.js"></script>
- <!-- Just Gage -->
- <!--<script src="http://gatepass.niituniversity.in/assets/js/justgage/justgage.js"></script>-->
- <!--<script src="http://gatepass.niituniversity.in/assets/js/justgage/raphael.2.1.0.min.js"></script>-->
-<!-- Custom JS -->
- <script src="http://gatepass.niituniversity.in//assets/js/menu.js"></script>
- <!--<script src="http://gatepass.niituniversity.in/assets/js/custom-index2.js"></script>-->
-
- <script type="text/javascript">
-   //ScrollUp
-   $(function () {
-     $.scrollUp({
-       scrollName: 'scrollUp', // Element ID
-       topDistance: '300', // Distance from top before showing element (px)
-       topSpeed: 300, // Speed back to top (ms)
-       animation: 'fade', // Fade, slide, none
-       animationInSpeed: 400, // Animation in speed (ms)
-       animationOutSpeed: 400, // Animation out speed (ms)
-       scrollText: 'Top', // Text for element
-       activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-     });
-   });
- </script>
-<!-- Developed By Chaitanya Reddy et al -->
-<!-- (@chaitanyachavali) -->
-</body>
+    <!-- Main Container end -->
+    <script src="http://gatepass.niituniversity.in/assets/js/jquery.scrollUp.js"></script>
+    <!-- jQuery UI JS -->
+    <script src="http://gatepass.niituniversity.in/assets/js/jquery-ui-v1.10.3.js"></script>
+    <!-- Just Gage -->
+    <!--<script src="http://gatepass.niituniversity.in/assets/js/justgage/justgage.js"></script>-->
+    <!--<script src="http://gatepass.niituniversity.in/assets/js/justgage/raphael.2.1.0.min.js"></script>-->
+    <!-- Custom JS -->
+    <script src="http://gatepass.niituniversity.in//assets/js/menu.js"></script>
+    <!--<script src="http://gatepass.niituniversity.in/assets/js/custom-index2.js"></script>-->
+    <script type="text/javascript">
+      //ScrollUp
+      $(function () {
+        $.scrollUp({
+          scrollName: 'scrollUp', // Element ID
+          topDistance: '300', // Distance from top before showing element (px)
+          topSpeed: 300, // Speed back to top (ms)
+          animation: 'fade', // Fade, slide, none
+          animationInSpeed: 400, // Animation in speed (ms)
+          animationOutSpeed: 400, // Animation out speed (ms)
+          scrollText: 'Top', // Text for element
+          activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+        });
+      });
+    </script>
+    <!-- Developed By Chaitanya Reddy et al -->
+    <!-- (@chaitanyachavali) -->
+  </body>
 </html>

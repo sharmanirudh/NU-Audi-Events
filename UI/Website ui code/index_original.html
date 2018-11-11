@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NU Audi Events</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-signin-client_id" content="1059501399871-hpvsopqhq9ftso9nqjhfc52oqpbq5kft.apps.googleusercontent.com">
+</head>
+<body id="background">
+	<div id="container">
+		<div id="idcard_background"></div>
+		<div id="phone_idcard" class="swing_image"></div>
+		<div id="main_content">
+			<div id="header">
+				<div id="header_content">
+					<div id="header_content_logo">NU Audi <div class="breakline"></div>Events</div>
+					<div id="header_content_links">
+						<span><a href="">Home</a></span>
+						<span><a href="">About Us</a></span>
+						<span><a href="">Services</a></span>
+						<span><a href="">Contact Us</a></span>
+						<button class="button">Get Started</button>
+					</div>
+				</div>
+			</div>
+			<div id="login">
+				<div id="student_login">
+					Student Login
+					<div id="google_sign_in" class="g-signin2" data-width="300" data-height="200" data-longtitle="true"></div>
+				  	<script>
+					    function onSuccess(googleUser) {
+					      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+					    }
+					    function onFailure(error) {
+					      console.log(error);
+					    }
+					    function renderButton() {
+					      gapi.signin2.render('my-signin2', {
+					        'scope': 'profile email',
+					        'width': 240,
+					        'height': 50,
+					        'longtitle': true,
+					        'theme': 'dark',
+					        'onsuccess': onSuccess,
+					        'onfailure': onFailure
+					      });
+					    }
+				  	</script>
+				  	<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+				</div>
+				<div id="faculty_login">
+					<div class="divider"></div>
+					Faculty Login
+					<div>
+						<div>
+							<input type="text" placeholder="Username" name="faculty_username">
+						</div>
+						<div>
+							<input type="password" placeholder="Password" name="faculty_username">
+							<button id="login_button">Login</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

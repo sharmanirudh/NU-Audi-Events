@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>NU Gatepass | NIIT University</title>
+  <title>NU Audi Events | NIIT University</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="NIIT University" />
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="1059501399871-hpvsopqhq9ftso9nqjhfc52oqpbq5kft.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <link rel="icon" href="img/favicon.png">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
@@ -31,7 +34,8 @@
               </div>
               <div class="content">
                 <div class="form-group">
-                  <a href="https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=online&client_id=391414852706-iq5h6l5phvvn3snq7bf6alq531pdk12r.apps.googleusercontent.com&redirect_uri=http%3A%2F%2FGatepass.niituniversity.in%2Findex.php%2FGatePassController%2FstudentLogin&state&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&approval_prompt=auto" class="btn btn-danger"><i class="fa fa-google-plus"></i>Click to Student Login</a>
+                  <!-- <a href="https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=online&client_id=391414852706-iq5h6l5phvvn3snq7bf6alq531pdk12r.apps.googleusercontent.com&redirect_uri=http%3A%2F%2FGatepass.niituniversity.in%2Findex.php%2FGatePassController%2FstudentLogin&state&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&approval_prompt=auto" class="btn btn-danger"><i class="fa fa-google-plus"></i>Click to Student Login</a> -->
+                  <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
                 </div>
                 <div class="form-group">
                   <hr>
@@ -62,6 +66,22 @@
   <!-- Main Container end -->
   <script src="js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script>
+    function onSignIn(googleUser) {
+      // Useful data for your client-side scripts:
+      var profile = googleUser.getBasicProfile();
+      console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+      console.log('Full Name: ' + profile.getName());
+      console.log('Given Name: ' + profile.getGivenName());
+      console.log('Family Name: ' + profile.getFamilyName());
+      console.log("Image URL: " + profile.getImageUrl());
+      console.log("Email: " + profile.getEmail());
+
+      // The ID token you need to pass to your backend:
+      var id_token = googleUser.getAuthResponse().id_token;
+      console.log("ID Token: " + id_token);
+    };
+  </script>
   <!-- Developed By Chaitanya Reddy et al -->
   <!-- (@chaitanyachavali) -->
 </body>
