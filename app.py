@@ -1,7 +1,8 @@
 import os
-from flask import Flask, redirect, jsonify
+from flask import Flask, redirect, jsonify, request
 from flask_cors import CORS
 import utils
+import requests
 
 # User-defined imports
 # from brain import *
@@ -11,13 +12,84 @@ from utils import *
 app = Flask(__name__)
 CORS(app)
 
-# Registers a student to the attendence portal and returns the unique key
-@app.route('/register/<name>/<email>/<mac>')
-def register(name, email, mac):
-	key = random_string_generator(size=13)
-	s = utils.Student(name, email, mac, key)
-	registerStudent(s)
-	return jsonify(utils.Response(status_code=200, text=key).json())
+@app.route('/oauth/faculty', methods=['POST'])
+def login_faculty():
+	if request.method == 'POST':
+		email = request.form.get('email')
+		passw = request.form.get('passw')
+		auth = firebase.auth()
+		user = ""
+		try:
+			user = auth.sign_in_with_email_and_password(email, passw)
+			key = random_string_generator(size=13)
+			f = utils.Faculty(email, key)
+			all_faculties = getAllFaculties()
+			if all_faculties.each() != None:
+				flag = False
+				for faculty in all_faculties.each():
+					print(faculty.key())
+					f2 = getFacultyDetails(faculty.key())
+					if f == f2:
+						flag = True
+						setFacultyOffline(f2)
+						print("Faculty exists")
+						break
+				if not flag:
+					registerFaculty(f, passw)
+					setFacultyOffline(f)
+				else:
+					print("Faculty not registered.")
+			else:
+				registerFaculty(f, passw)
+				setFacultyOffline(f)
+		except requests.exceptions.HTTPError as e:
+			print(e)
+		return jsonify(user)
+
+# Registers a student to the attendence portal and returns status
+@app.route('/oauth/student', methods=['POST'])
+def login_student():
+	if request.method == 'POST':
+		name = request.form.get('name')
+		email = request.form.get('email')
+		mac = request.form.get('mac')
+		key = random_string_generator(size=13)
+		s = utils.Student(name, email, mac, key)
+		all_students = getAllStudents()
+		if all_students.each() != None:
+			flag = False
+			for student in all_students.each():
+				print(student.key())
+				s2 = getStudentDetails(student.key())
+				if s == s2:
+					flag = True
+					setStudentOnline(s2)
+					print("Student exists")
+					break
+			if not flag:
+				registerStudent(s)
+				setStudentOnline(s)
+			else:
+				print("Student not registered.")
+		else:
+			registerStudent(s)
+			setStudentOnline(s)
+		return jsonify(utils.Response(status_code=303, text='successfully logged in.').json())
+
+@app.route('/events/online-events', methods=['GET'])
+def get_all_online_events():
+	all_online_events_json = []
+	if request.method == 'GET':
+		all_online_events = getAllOnlineEvents()
+		if all_online_events.each() != None:
+			print(all_online_events.val())
+			for event in all_online_events.each():
+				print(event.key())
+				print(event.val())
+				e = getEventDetails(event.key())
+				print(all_online_events_json.append(e.json()))
+	return jsonify(utils.Response(status_code=200, text=all_online_events_json).json())
+
 
 # # Checks if a student with the same current email exists
 # @app.route('/check_registration/<email>')

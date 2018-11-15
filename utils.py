@@ -2,6 +2,7 @@ import string
 import random
 import time
 import datetime
+from collections import OrderedDict
 
 ########### Student ##########################################################################
 
@@ -17,6 +18,16 @@ class Student:
 		self.mac = mac
 		self.key = key
 
+	def __eq__(self, other):
+	    """Overrides the default implementation"""
+	    if isinstance(other, self.__class__):
+	        return self.email == other.email
+	    return False
+
+	def __ne__(self, other):
+	    """Overrides the default implementation (unnecessary in Python 3)"""
+	    return not self.__eq__(other)
+
 	def json(self):
 		return {
 		"name": self.name,
@@ -28,18 +39,25 @@ class Student:
 ########### Faculty ##########################################################################
 
 class Faculty:
-	name = ''
 	email = ''
 	key = ''
 
-	def __init__(self, name, email, key):
-		self.name = name
+	def __init__(self, email, key):
 		self.email = email
 		self.key = key
 
+	def __eq__(self, other):
+	    """Overrides the default implementation"""
+	    if isinstance(other, self.__class__):
+	        return self.email == other.email
+	    return False
+
+	def __ne__(self, other):
+	    """Overrides the default implementation (unnecessary in Python 3)"""
+	    return not self.__eq__(other)
+
 	def json(self):
 		return {
-		"name": self.name,
 		"email": self.email,
 		"key": self.key,
 		}
@@ -88,9 +106,16 @@ class Password:
 class Session:
 	login_stamp = ''
 	logout_stamp = ''
+	key = ''
 
-	def __init__(self):
-		self.login_stamp = timestamp_generator()
+	def __init__(self, key, login_stamp='', logout_stamp=''):
+		if not login_stamp:
+			self.login_stamp = timestamp_generator()
+		else:
+			self.login_stamp = login_stamp
+		if logout_stamp:
+			self.logout_stamp = logout_stamp
+		self.key = key
 
 	def setLoginStamp(self):
 		self.login_stamp = timestamp_generator()
@@ -102,6 +127,7 @@ class Session:
 		return {
 		'login_stamp': self.login_stamp,
 		'logout_stamp': self.logout_stamp,
+		'key': self.key
 		}
 
 ########### Event ############################################################################
@@ -115,10 +141,10 @@ class Event:
 	attendance_end_time = ''
 	date = ''
 	summary = ''
-	attendees = []
+	attendees = OrderedDict()
 	key = ''
 
-	def __init__(self, name, speaker, event_start_time, event_end_time, date, attendance_start_time, attendance_end_time, key, attendees=[], summary=''):
+	def __init__(self, name, speaker, event_start_time, event_end_time, date, attendance_start_time, attendance_end_time, key, attendees=OrderedDict(), summary=''):
 		self.name = name
 		self.speaker = speaker
 		self.event_start_time = event_start_time
@@ -153,18 +179,14 @@ class Response:
 	next_link = ''
 	expecting_input = False
 
-	def __init__(self, status_code, text, next_link=None, expecting_input=False):
+	def __init__(self, status_code, text):
 		self.status_code = status_code
 		self.text = text
-		self.next_link = next_link
-		self.expecting_input = expecting_input
 
 	def json(self):
 		return {
 		"status_code": self.status_code,
 		"text": self.text,
-		"next_link": self.next_link,
-		"expecting_input": self.expecting_input
 		}
 
 ########### Random ###########################################################################

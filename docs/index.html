@@ -29,11 +29,24 @@
 					<div id="my-signin2" class="google_sign_in"></div>
 					  	<script>
 						    function onSuccess(googleUser) {
-						      	console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-						      	console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-						        console.log('Name: ' + profile.getName());
-						        console.log('Image URL: ' + profile.getImageUrl());
-						        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+						    	var profile = googleUser.getBasicProfile();
+				    	        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+				    	        console.log('Full Name: ' + profile.getName());
+				    	        console.log('Given Name: ' + profile.getGivenName());
+				    	        console.log('Family Name: ' + profile.getFamilyName());
+				    	        console.log("Image URL: " + profile.getImageUrl());
+				    	        console.log("Email: " + profile.getEmail());
+				    	        var url = 'http://127.0.0.1:5000/oauth/student';
+				    	        var params = 'email=' + profile.getEmail() + '&name=' + profile.getName() + '&mac=' + 'AB:06:4F:23:B1:AB';
+				    	        var xhr = new XMLHttpRequest();
+				    	        xhr.open('POST', url, true);
+				    	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				    	        // xhr.onreadystatechange = function() { // Call a function when the state changes.
+				    	        //     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {// XMLHttpRequest.DONE == 4
+				    	        //         // Request finished. Do processing here.
+				    	        //     }
+				    	        // }
+				    	        xhr.send(params);
 						    }
 						    function onFailure(error) {
 						      	console.log(error);
@@ -46,7 +59,7 @@
 							        'longtitle': true,
 							        'theme': 'dark',
 							        'onsuccess': onSuccess,
-							        'onfailure': onFailure
+							        'onfailure': onFailure,
 						      	});
 						    }
 					  	</script>
@@ -59,10 +72,10 @@
 					Faculty Login
 					<div>
 						<div>
-							<input type="text" placeholder="Username" name="faculty_username">
+							<input id="faculty_email" type="text" placeholder="Username" name="faculty_username">
 						</div>
 						<div>
-							<input type="password" placeholder="Password" name="faculty_username">
+							<input id="faculty_passw" type="password" placeholder="Password" name="faculty_username">
 							<button id="login_button">Login</button>
 						</div>
 					</div>
@@ -71,4 +84,25 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	var faculty_login_button = document.getElementById("login_button");
+	if (faculty_login_button.addEventListener)
+		faculty_login_button.addEventListener("click", loginFaculty);
+
+	function loginFaculty() {
+		var email = document.getElementById("faculty_email").value;
+		var passw = document.getElementById("faculty_passw").value;
+		var url = 'http://127.0.0.1:5000/oauth/faculty';
+		var params = 'email=' + email + '&passw=' + passw;
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', url, true);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		// xhr.onreadystatechange = function() { // Call a function when the state changes.
+		//     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {// XMLHttpRequest.DONE == 4
+		//         // Request finished. Do processing here.
+		//     }
+		// }
+		xhr.send(params);
+	}
+</script>
 </html>
