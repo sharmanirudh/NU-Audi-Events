@@ -176,17 +176,21 @@ def makeNewEvent(event):
 	db = firebase.database()
 	db.child("events").child(event.key).set(event.json())
 
-def setEventOnline(event):
+def setEventOnline(key):
 	db = firebase.database()
-	db.child("online_events").child(event.key).set(True)
+	db.child("online_events").child(key).set(True)
 
-def setCurrentEvent(event):
+def setCurrentEvent(key):
 	db = firebase.database()
-	db.child("current_events").child(event.key).set(True)
+	db.child("current_events").child(key).set(True)
 
-def markStudentAttendance(event, student):
+def setEventSummary(key, summary):
 	db = firebase.database()
-	db.child("events").child(event.key).child("attendees").child(student.key).set(True) 
+	db.child("events").child(key).child('summary').set(summary)
+
+def markStudentAttendance(eventKey, studentKey):
+	db = firebase.database()
+	db.child("events").child(eventKey).child("attendees").child(studentKey).set(True) 
 
 def getEventDetails(key):
 	db = firebase.database()
@@ -211,6 +215,10 @@ def getEventDetails(key):
 	e = db.child("events").child(key)
 	attendees = e.child("attendees").get().val()
 	return utils.Event(name, speaker, event_start_time, event_end_time, date, attendance_start_time, attendance_end_time, key, attendees=attendees, summary=summary)
+
+def getAllEvents():
+	db = firebase.database()
+	return db.child('events').get()
 
 def getAllOnlineEvents():
 	db = firebase.database()
@@ -269,8 +277,8 @@ if __name__ == '__main__':
 	e2 = utils.Event("MUN NIIT University", "Dr Prem Atreja", utils.timestamp_generator(), utils.timestamp_generator(), utils.timestamp_generator(), utils.timestamp_generator(), utils.timestamp_generator(), random_string_generator(size=13))
 	e2.addSummary("Model Unite Nations in NIIT University")
 	makeNewEvent(e2)
-	setCurrentEvent(e2)
-	setEventOnline(e2)
+	setCurrentEvent(e2.key)
+	setEventOnline(e2.key)
 
 	markStudentAttendance(e1, s1)
 	markStudentAttendance(e1, s2)

@@ -125,9 +125,9 @@ class Session:
 
 	def json(self):
 		return {
-		'login_stamp': self.login_stamp,
-		'logout_stamp': self.logout_stamp,
-		'key': self.key
+		"login_stamp": self.login_stamp,
+		"logout_stamp": self.logout_stamp,
+		"key": self.key
 		}
 
 ########### Event ############################################################################
@@ -153,6 +153,8 @@ class Event:
 		self.attendance_start_time = attendance_start_time
 		self.attendance_end_time = attendance_end_time
 		self.key = key
+		self.attendees = attendees
+		self.summary = summary
 
 	def addSummary(self, summary):
 		self.summary = summary
@@ -176,8 +178,6 @@ class Event:
 class Response:
 	status_code = ''
 	text = ''
-	next_link = ''
-	expecting_input = False
 
 	def __init__(self, status_code, text):
 		self.status_code = status_code
@@ -199,3 +199,11 @@ def random_string_generator(size=10, chars=string.ascii_lowercase + string.digit
 def timestamp_generator():
 	ts = time.time()
 	return datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+
+def string_to_timestamp(date_time_str):
+	return datetime.datetime.strptime(date_time_str, '%Y-%m-%d %H:%M:%S')
+	# "Jun 28 2018 at 7:40AM" -> "%b %d %Y at %I:%M%p"
+	# "September 18, 2017, 22:19:55" -> "%B %d, %Y, %H:%M:%S"
+	# "Sun,05/12/99,12:30PM" -> "%a,%d/%m/%y,%I:%M%p"
+	# "Mon, 21 March, 2015" -> "%a, %d %B, %Y"
+	# "2018-03-12T10:12:45Z" -> "%Y-%m-%dT%H:%M:%SZ"
