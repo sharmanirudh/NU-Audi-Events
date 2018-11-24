@@ -10,13 +10,16 @@ class Student:
 	name = ''
 	email = ''
 	mac = ''
+	id_token = ''
 	key = ''
 
-	def __init__(self, name, email, mac, key):
+	def __init__(self, name, email, mac, image_url, key, id_token=''):
 		self.name = name
 		self.email = email
 		self.mac = mac
+		self.image_url = image_url
 		self.key = key
+		self.id_token = id_token
 
 	def __eq__(self, other):
 	    """Overrides the default implementation"""
@@ -27,23 +30,30 @@ class Student:
 	def __ne__(self, other):
 	    """Overrides the default implementation (unnecessary in Python 3)"""
 	    return not self.__eq__(other)
+
+	def getIdToken():
+		return self.id_token
 
 	def json(self):
 		return {
 		"name": self.name,
 		"email": self.email,
 		"mac": self.mac,
+		"image_url": self.image_url,
 		"key": self.key,
+		# "id_token": self.id_token,
 		}
 
 ########### Faculty ##########################################################################
 
 class Faculty:
 	email = ''
+	id_token = ''
 	key = ''
 
-	def __init__(self, email, key):
+	def __init__(self, email, key, id_token=''):
 		self.email = email
+		self.id_token = id_token
 		self.key = key
 
 	def __eq__(self, other):
@@ -56,9 +66,13 @@ class Faculty:
 	    """Overrides the default implementation (unnecessary in Python 3)"""
 	    return not self.__eq__(other)
 
+	def getIdToken():
+		return self.id_token
+
 	def json(self):
 		return {
 		"email": self.email,
+		"id_token": self.id_token,
 		"key": self.key,
 		}
 
@@ -189,6 +203,25 @@ class Response:
 		"text": self.text,
 		}
 
+########### Cookie ###########################################################################
+
+class Cookie:
+	id_token = ''
+	key = ''
+	session_id = ''
+
+	def __init__(self, id_token, session_id, key):
+		self.id_token = id_token
+		self.session_id = session_id
+		self.key = key
+
+	def json(self):
+		return {
+		"id_token": self.id_token,
+		"session_id": self.session_id,
+		"key": self.key,
+		}
+
 ########### Random ###########################################################################
 
 def random_string_generator(size=10, chars=string.ascii_lowercase + string.digits):
@@ -198,12 +231,42 @@ def random_string_generator(size=10, chars=string.ascii_lowercase + string.digit
 
 def timestamp_generator():
 	ts = time.time()
-	return datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+	return datetime.datetime.fromtimestamp(ts).strftime('%d-%m-%Y %H:%M:%S')
 
 def string_to_timestamp(date_time_str):
-	return datetime.datetime.strptime(date_time_str, '%Y-%m-%d %H:%M:%S')
+	return datetime.datetime.strptime(date_time_str, '%d-%m-%Y %H:%M:%S')
 	# "Jun 28 2018 at 7:40AM" -> "%b %d %Y at %I:%M%p"
 	# "September 18, 2017, 22:19:55" -> "%B %d, %Y, %H:%M:%S"
 	# "Sun,05/12/99,12:30PM" -> "%a,%d/%m/%y,%I:%M%p"
 	# "Mon, 21 March, 2015" -> "%a, %d %B, %Y"
 	# "2018-03-12T10:12:45Z" -> "%Y-%m-%dT%H:%M:%SZ"
+
+########### Encryption #######################################################################
+
+def encrypt(text, lo, up):
+	result = ""
+	for i in range(len(text)):
+		char = text[i]
+		if (char.isalpha()):
+			if (char.isupper()):
+			    result += chr((ord(char) + up - 65) % 26 + 65)
+			else:
+				result += chr((ord(char) + lo - 97) % 26 + 97)
+		else:
+			result += char
+	return result
+
+########### Decryption #######################################################################
+
+def decrypt(text, lo, up):
+	result = ""
+	for i in range(len(text)):
+		char = text[i]
+		if (char.isalpha()):
+			if (char.isupper()):
+			    result += chr((ord(char) - up - 65) % 26 + 65)
+			else:
+				result += chr((ord(char) - lo - 97) % 26 + 97)
+		else:
+			result += char
+	return result
