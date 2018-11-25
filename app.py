@@ -19,7 +19,7 @@ def login_faculty():
 		passw = request.form.get('passw')
 		user = facultySignInWithEmailAndPassword(email, passw)
 		if user == None:
-			return jsonify(utils.Response(status_code=400, text='Email or password is incorrect.').json())
+			return jsonify(utils.Response(status_code=400, text='Either email or password is incorrect.').json())
 		id_token = user["idToken"]
 		key = random_string_generator(size=13)
 		f = utils.Faculty(email, key, id_token)
@@ -36,49 +36,14 @@ def login_faculty():
 					break
 			if not flag:
 				registerFaculty(f, passw)
-				setFacultyOnline(f2.key)
+				setFacultyOnline(f.key)
 			else:
 				print("Faculty not registered.")
 		else:
 			registerFaculty(f, passw)
-			setFacultyOnline(f2.key)
+			setFacultyOnline(f.key)
 			print(e)
 		return jsonify(user)
-
-@app.route('/oauth/student/logout', methods=['POST'])
-def logout_student():
-	if request.method == 'POST':
-		value = request.form.get('value')
-		arr = value.split(":")
-		id_token = utils.decrypt(arr[0], 4, 12)
-		session_id = arr[1]
-		original_id_token = ''
-		key = ''
-		all_students = getAllStudents()
-		flag = False
-		if all_students.each() != None:
-			for student in all_students.each():
-				key = student.key()
-				original_id_token = getStudentIdToken(key)
-				if id_token == original_id_token:
-					flag = True
-					setStudentOffline(key)
-					break
-		elif flag == False:
-			all_faculties = getAllFaculties()
-			if all_faculties.each() != None:
-				for faculty in all_faculties.each():
-					key = faculty.key()
-					original_id_token = getFacultyIdToken(key)
-					if id_token == original_id_token:
-						flag = True
-						setFacultyOffline(key)
-						break
-		if flag == False:
-			return jsonify(utils.Response(status_code=404, text='Logout failed. User not found').json())
-		c = utils.Cookie(id_token, session_id, key)
-		deleteCookie(c)
-		return jsonify(utils.Response(status_code=200, text='User successfully logged out.').json())
 
 # Registers a student to the attendence portal and returns status
 @app.route('/oauth/student', methods=['POST'])
@@ -105,13 +70,56 @@ def login_student():
 					break
 			if not flag:
 				registerStudent(s)
-				setStudentOnline(s2.key)
+				setStudentOnline(s.key)
 			else:
 				print("Student not registered.")
 		else:
 			registerStudent(s)
-			setStudentOnline(s2.key)
+			setStudentOnline(s.key)
 		return jsonify(utils.Response(status_code=303, text='successfully logged in.').json())
+
+@app.route('/oauth/student/logout', methods=['POST'])
+def logout_student():
+	if request.method == 'POST':
+		value = request.form.get('value')
+		arr = value.split(":")
+		id_token = utils.decrypt(arr[0], 4, 12)
+		session_id = arr[1]
+		original_id_token = ''
+		key = ''
+		all_students = getAllStudents()
+		if all_students.each() != None:
+			for student in all_students.each():
+				key = student.key()
+				original_id_token = getStudentIdToken(key)
+				if id_token == original_id_token:
+					setStudentOffline(key)
+					c = utils.Cookie(id_token, session_id, key)
+					deleteCookie(c)
+					return jsonify(utils.Response(status_code=200, text='Student successfully logged out.').json())
+		return jsonify(utils.Response(status_code=404, text='Logout failed. Student not found').json())
+
+@app.route('/oauth/faculty/logout', methods=['POST'])
+def logout_faculty():
+	if request.method == 'POST':
+		value = request.form.get('value')
+		arr = value.split(":")
+		id_token = utils.decrypt(arr[0], 4, 12)
+		session_id = arr[1]
+		original_id_token = ''
+		key = ''
+		all_faculties = getAllFaculties()
+		if all_faculties.each() != None:
+			for faculty in all_faculties.each():
+				key = faculty.key()
+				original_id_token = getFacultyIdToken(key)
+				if id_token == original_id_token:
+					c = utils.Cookie(id_token, session_id, key)
+					setFacultyOffline(key)
+					deleteCookie(c)
+					return jsonify(utils.Response(status_code=200, text='Faculty successfully logged out.').json())
+		return jsonify(utils.Response(status_code=404, text='Logout failed. Faculty not found').json())
+		
 
 @app.route('/set-cookie', methods=['POST'])
 def set_cookie():
@@ -208,8 +216,9 @@ def manage_event():
 			for event in all_events.each():
 				print(event.key())
 				print(event.val())
-				e = getEventDetails(event.key())
-				print(all_events_json.append(e.json()))
+				e_json = getEventDetails(event.key()).json()
+				e_json.pop('attendees')
+				print(all_events_json.append(e_json))
 		return jsonify(utils.Response(status_code=200, text=all_events_json).json())		
 
 	name = request.form.get('name')
@@ -299,8 +308,9 @@ def get_all_online_events():
 			for event in all_online_events.each():
 				print(event.key())
 				print(event.val())
-				e = getEventDetails(event.key())
-				print(all_online_events_json.append(e.json()))
+				e_json = getEventDetails(event.key()).json()
+				e_json.pop('attendees')
+				print(all_online_events_json.append(e_json))
 	return jsonify(utils.Response(status_code=200, text=all_online_events_json).json())
 
 @app.route('/events/<key>/add-summary', methods=['PUT'])
@@ -318,17 +328,30 @@ def add_summary_to_event(key):
 @app.route('/events/<event_key>/mark-attendance', methods=['PUT'])
 def mark_student_attendance(event_key):
 	if request.method == 'PUT':
-		student_key = request.form.get('student_key')
 		mac = request.form.get('mac')
-		s = getStudentDetails(student_key)
-		if s.email is not None:
-			if s.mac == 'PB:01:98:BH:67:BD':
-				markStudentAttendance(event_key, student_key)
-				return jsonify(utils.Response(status_code=200, text='Attendance marked.').json())
-			else:
-				return jsonify(utils.Response(status_code=404, text='Student not in auditorium.').json())
-		else:
-			return jsonify(utils.Response(status_code=404, text='Attendance not marked.').json())
+		value = request.form.get('value')
+		arr = value.split(":")
+		id_token = utils.decrypt(arr[0], 4, 12)
+		session_id = arr[1]
+		original_id_token = ''
+		key = ''
+		all_students = getAllStudents()
+		if all_students.each() != None:
+			for student in all_students.each():
+				key = student.key()
+				original_id_token = getStudentIdToken(key)
+				print(id_token)
+				print(original_id_token)
+				if id_token == original_id_token:
+					s = getStudentDetails(key)
+					if s.email is not None:
+						if s.mac == 'AB:06:4F:23:B1:AB':
+							markStudentAttendance(event_key, key)
+							return jsonify(utils.Response(status_code=200, text='Attendance marked.').json())
+						else:
+							return jsonify(utils.Response(status_code=404, text='Student not in auditorium.').json())
+					break
+		return jsonify(utils.Response(status_code=404, text='Attendance not marked.').json())
 
 @app.route('/encrypt', methods=['POST'])
 def encrypt():

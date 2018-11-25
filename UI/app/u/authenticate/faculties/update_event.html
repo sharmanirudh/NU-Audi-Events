@@ -8,14 +8,14 @@
   <meta name="author" content="Anirudh Sharma">
   <title>NU-Audi Events</title>
   <!-- Favicon -->
-  <link href="assets/img/brand/favicon.png" rel="icon" type="image/png">
+  <link href="../../../../assets/img/brand/favicon.png" rel="icon" type="image/png">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <!-- view_events -->
-  <link href="assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-  <link href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="../../../../assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+  <link href="../../../../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
   <!-- Argon CSS -->
-  <link type="text/css" href="assets/css/argon.css?v=1.0.0" rel="stylesheet">
+  <link type="text/css" href="../../../../assets/css/argon.css?v=1.0.0" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
   <script src="assets/js/validate-login.js"></script>
 </head>
@@ -29,7 +29,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Brand -->
-      <a class="navbar-brand pt-0" href="./index.html">
+      <a class="navbar-brand pt-0" href="./dashboard.html">
         <h1 class="btn-danger display-4">NU-Audi Events</h1>
       </a>
       <!-- User -->
@@ -87,7 +87,7 @@
         <div class="navbar-collapse-header d-md-none">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <a href="./index.html">
+              <a href="./dashboard.html">
                 <h1 class="btn-danger display-4">NU-Audi Events</h1>
               </a>
             </div>
@@ -113,25 +113,25 @@
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="./index.html">
+            <a class="nav-link" href="./dashboard.html">
               <i class="ni ni-tv-2 text-primary"></i> Online Events
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./view_events.html">
-              <i class="ni ni-bullet-list-67 text-red"></i> View Events
+              <i class="ni ni-planet text-blue"></i> View Events
             </a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="./update_event.html">
-              <i class="ni ni-pin-3 text-orange"></i> Update Event
+          <li class="nav-item">
+            <a class="nav-link" href="./update_events.html">
+              <i class="ni ni-pin-3 text-orange"></i> Update Events
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./create_event.html">
               <i class="ni ni-single-02 text-yellow"></i> Create Event
             </a>
-          </li> -->
+          </li>
          <!--  <li class="nav-item">
             <a class="nav-link active" href="./tables.html">
               <i class="ni ni-bullet-list-67 text-red"></i> Tables
@@ -175,10 +175,11 @@
   </nav>
   <!-- Main content -->
   <div class="main-content">
+    <!-- Top navbar -->
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Online Events</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./dashboard.html">Online Events</a>
         <!-- Form -->
         <!-- <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
@@ -238,44 +239,126 @@
     </div>
     <!-- Page content -->
     <div class="container-fluid mt--7 h-100">
+      <!-- Table -->
       <div class="row h-100 justify-content-center align-items-center">
-        <div class="col-xl-10 mb-5 mb-xl-0">
-          <div class="card card-profile shadow">
+        <div class="col-xl-10">
+          <div class="card shadow">
             <!-- Material Progress Bar -->
             <div id="card_progress_bar" >
               <div id="card_progress_bar" class="progress">
                 <div class="indeterminate"></div>
               </div>
             </div>
-            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-0">
-              <div class="d-flex justify-content-between">
-                <span id="event_date" class="badge badge-pill badge-info col-xs-12"></span>
-                <span id="event_time" class="badge badge-pill badge-info col-xs-12"></span>
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">Update event details</h3>
+                </div>
               </div>
             </div>
-            <div class="card-body pt-0 pt-md-4">
-              <div class="row">
-                <div class="col">
-                  <div class="card-profile-stats d-flex justify-content-center mt-md-1">
-                    <div>
-                      <span id="no_of_attendees" class="heading">0</span>
-                      <span class="description">Attendees</span>
+            <div class="card-body">
+              <form>
+                <h6 class="heading-small text-muted mb-4">Basic event information</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-11">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-event-name">Event name</label>
+                        <input type="text" id="input_event_name" class="form-control form-control-alternative" placeholder="Event Name">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-11">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-speaker-name">Speaker name</label>
+                        <input id="input_speaker_name" type="text" id="input_speaker_name" class="form-control form-control-alternative" placeholder="Speaker Name">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-11">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-venue">Venue</label>
+                        <input id="input_venue" class="form-control form-control-alternative" placeholder="venue" value="Auditorium" type="text" disabled>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-11">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-event-start-date">Event start date</label>
+                        <div class="input-group input-group-alternative">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                          </div>
+                          <input id="input_event_start_date" class="form-control datepicker" placeholder="Select date" type="text">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-11">
+                        <div class="form-group">
+                        <label class="form-control-label" for="input-event-end-date">Event end date</label>
+                        <div class="input-group input-group-alternative">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                          </div>
+                          <input id="input_event_end_date" class="form-control datepicker" placeholder="Select date" type="text">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-11">
+                        <div class="form-group">
+                        <label class="form-control-label" for="input-attendance-start-time">Attendance start time</label>
+                        <div class="input-group input-group-alternative">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                          </div>
+                          <input id="input_attendance_start_time" class="form-control datepicker" placeholder="Select date" type="text">
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="text-center">
-                <h3 id="event_name">
-                </h3>
-                <div id="speaker_name" class="h5 font-weight-300">
+                <!-- Description -->
+                <h6 class="heading-small text-muted mb-4">Event Description</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-11">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-summary">Event summary</label>
+                        <textarea id="input_summary" rows="4" class="form-control form-control-alternative" placeholder="A few words of the event..."></textarea>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <i id="event_venue" class="ni education_hat mr-2"></i>Auditorium
-                </div>
-                <hr class="my-4" />
-                <p id="event_summary"></p>
-              </div>
+              </form>
             </div>
+            <div class="card-header border-0">
+              <h3 class="mb-0">Attendance Record</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">E-Mail</th>
+                    <th scope="col">Attendance</th>
+                    <!-- <th scope="col"></th> -->
+                  </tr>
+                </thead>
+                <tbody id="attendees">
+                </tbody>
+              </table>
+            </div>
+
+            <div id="update_event_button_div" class="card-footer py-4">
+            </div>
+
           </div>
         </div>
       </div>
@@ -309,25 +392,55 @@
   </div>
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../../../assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="../../../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Argon JS -->
-  <script src="assets/js/argon.js?v=1.0.0"></script>
+  <script src="../../../../assets/js/argon.js?v=1.0.0"></script>
 </body>
 <script type="text/javascript">
+  (function() {
+    var params = 'value=' + Cookies.get()["NU-Audi-Events"];
+    console.log(params);
+    var url = 'http://127.0.0.1:5000/students/profile';
+    var request = null;
+    if (window.XMLHttpRequest) {
+      request = new XMLHttpRequest();
+    } else {
+      request = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    request.open('POST', url, true);
+    request.responseType = 'text';
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    request.onload = function() {
+      var response = JSON.parse(request.responseText);
+      console.log(response);
+      if (response["status_code"] == 200) {
+        renderUserProfileHTML(response["text"]);
+        // console.log(response["text"]);
+        // console.log(response["text"][0]);
+        // console.log(response["text"][1]);
+        // console.log(response["text"][1].name);
+      }
+    }
+    request.send(params);
+  }());
+
+  function renderUserProfileHTML(profile) {
+    document.getElementById("student_name").innerHTML = profile["name"];
+    document.getElementById("student_image_1").innerHTML = "<img alt=\"Image placeholder\" src=\"" + profile["image_url"] + "\">";
+    document.getElementById("student_image_2").innerHTML = "<img alt=\"Image placeholder\" src=\"" + profile["image_url"] + "\">";
+  }
+
   function parseTime(string) {
     var dt  = string.split(/\-|\s/);
     var date = new Date(dt.slice(0,3).reverse().join('/')+' '+dt[3]);
     return date;
   }
-  // Get Querystring using javascript: https://stackoverflow.com/questions/9870512/how-to-obtain-the-query-string-from-the-current-url-with-javascript
-  // Solution that work in legacy browsers as well
+
   function getQueryStringValue (key) {  
     return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
   }
-  // In modern browsers
-  // let params = (new URL(document.location)).searchParams;
-  // let name = params.get("name");
 
   (function() {
     var url = 'http://127.0.0.1:5000/events/' + getQueryStringValue("e");
@@ -364,19 +477,66 @@
     var name = eventDetails["name"];
     var speaker = eventDetails["speaker"];
     var summary = eventDetails["summary"];
-    document.getElementById("event_date").innerHTML = parseTime(eventStartTime).toDateString() + " to " + parseTime(eventEndTime).toDateString();
-    document.getElementById("event_time").innerHTML = parseTime(eventStartTime).toLocaleTimeString() + " to " + parseTime(eventEndTime).toLocaleTimeString();
-    document.getElementById("no_of_attendees").innerHTML = attendees.length;
-    document.getElementById("event_name").innerHTML = name;
-    document.getElementById("speaker_name").innerHTML = speaker;
-    if (summary == "")
-      document.getElementById("event_summary").innerHTML = "No summary added yet";
-    else
-      document.getElementById("event_summary").innerHTML = summary;
+    document.getElementById("input_event_end_date").value = eventEndTime;
+    document.getElementById("input_attendance_start_time").value = attendanceStartTime;
+    document.getElementById("input_event_end_date").value = eventEndTime;
+    document.getElementById("input_event_start_date").value = eventStartTime;
+    document.getElementById("input_event_name").value = name;
+    document.getElementById("input_speaker_name").value = speaker;
+    document.getElementById("input_summary").value = summary;
+    var attendeesHTML = "";
+    for (var key in attendees) {
+      if (attendees.hasOwnProperty(key)) {           
+          console.log(key, attendees[key]);
+          attendeesHTML += "<tr id=\"" + attendees[key]["key"] + "\" class=\"attendee_tr\"> <th scope=\"row\"> <div class=\"media-body\"> <span class=\"mb-0 text-sm\">" + attendees[key]["name"] + "<\/span> <\/div><\/th> <td>" + attendees[key]["email"] + "<\/td><td> <button type=\"button\" class=\"btn btn-outline-danger btn-sm\" onClick=\"markAbsent('" + attendees[key]["key"] + "')\">Mark Absent<\/button> <\/td><\/tr>";
+      }
+    }
+    if (attendees.length == 0)
+      attendeesHTML = "<tr> <th scope=\"row\"> <div class=\"media-body\"> <span class=\"mb-0 text-sm\">No record to display.<\/span> <\/div><\/th><\/tr>";
+    document.getElementById("attendees").innerHTML += attendeesHTML;
+
+    document.getElementById("update_event_button_div").innerHTML = "<center><button type=\"button\" class=\"update_event btn btn-success\" onClick=\"updateEvent('" + eventDetails["key"] + "')\">Update details</button></center>";
   }
   
-  function updateEvent(event) {
-    window.location = "./update_event.html?e=" + event;
+  function markAbsent(id) {
+    document.getElementById(id).remove();
+  }
+
+  function updateEvent(eventKey) {
+    document.getElementById("card_progress_bar").innerHTML = "<div id=\"card_progress_bar\" class=\"progress\"> <div class=\"indeterminate\"></div></div>";
+    var attendanceEndTime = document.getElementById("input_event_end_date").value;
+    var attendanceStartTime = document.getElementById("input_attendance_start_time").value;
+    var name = document.getElementById("input_event_name").value;
+    var eventEndTime = document.getElementById("input_event_end_date").value;
+    var eventStartTime = document.getElementById("input_event_start_date").value;
+    var speaker = document.getElementById("input_speaker_name").value;
+    var summary = document.getElementById("input_summary").value;
+    var attendees = "";
+    var url = 'http://127.0.0.1:5000/events';
+    var el_attendee_tr = document.getElementsByClassName("attendee_tr");
+    for (var i = 0; i < el_attendee_tr.length; i++)
+      attendees += el_attendee_tr[i].id + ";";
+    console.log(attendees);
+    var params = 'attendance_end_time=' + attendanceEndTime + '&attendance_start_time=' + attendanceStartTime + '&name=' + name + '&eventEndTime=' + eventEndTime + '&eventStartTime=' + eventStartTime + '&speaker=' + speaker + '&summary=' + summary + '&attendees=' + attendees + '&key=' + eventKey;
+    console.log(params);
+    var request = null;
+    if (window.XMLHttpRequest) {
+        request = new XMLHttpRequest();
+     } else {
+        request = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    request.open('PUT', url, true);
+    request.responseType = 'text';
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.onload = function() {
+      document.getElementById("card_progress_bar").innerHTML = "";
+      var response = JSON.parse(request.responseText);
+      console.log(response);
+      if (response["status_code"] == 200)
+        window.location = "./create_event.html";
+      var response = JSON.parse(request.responseText);
+    }
+    request.send(params);
   }
   // var str = "2013-01-14-14-09-49";
   // var p = str.split("-");
@@ -401,5 +561,35 @@
   //                    parseInt(dateArr[4], 10),
   //                    parseInt(dateArr[5], 10));
   // alert(date);
+
+  function logout() {
+    var params = 'value=' + Cookies.get()["NU-Audi-Events"];
+    console.log(params);
+    var url = 'http://127.0.0.1:5000/oauth/faculty/logout';
+    var request = null;
+    if (window.XMLHttpRequest) {
+      request = new XMLHttpRequest();
+    } else {
+      request = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    request.open('POST', url, true);
+    request.responseType = 'text';
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    request.onload = function() {
+      var response = JSON.parse(request.responseText);
+      console.log(response);
+      if (response["status_code"] == 200) {
+        renderUserProfileHTML(response["text"]);
+        Cookies.remove("NU-Audi Events");
+        window.location = "../../../../login.html";
+        // console.log(response["text"]);
+        // console.log(response["text"][0]);
+        // console.log(response["text"][1]);
+        // console.log(response["text"][1].name);
+      }
+    }
+    request.send(params);
+  }
 </script>
 </html>

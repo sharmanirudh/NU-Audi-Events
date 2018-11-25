@@ -129,6 +129,9 @@
 		<div id="idcard_background"></div>
 		<div id="phone_idcard" class="swing_image"></div>
 		<div id="main_content">
+			<div id="card_progress_bar" >
+			  	
+			</div>
 			<div id="header">
 				<div id="header_content">
 					<div id="header_content_logo">NU Audi <div class="breakline"></div>Events</div>
@@ -153,6 +156,7 @@
 					<div id="my-signin2" class="google_sign_in"></div>
 					  	<script>
 						    function onSuccess(googleUser) {
+						    	document.getElementById("card_progress_bar").innerHTML = "<div id=\"card_progress_bar\" class=\"progress\"> <div class=\"indeterminate\"></div></div>"
 						    	var profile = googleUser.getBasicProfile();
 						    	var id_token = googleUser.getAuthResponse().id_token;
 				    	        console.log("ID Token: " + id_token);
@@ -211,6 +215,7 @@
 				    	        				request3.responseType = 'text';
 				    	        				request3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 				    	        				request3.onload = function() {
+				    	        					document.getElementById("card_progress_bar").innerHTML = "";
 				    	        					var response = JSON.parse(request3.responseText);
 				    	        					if (response["status_code"] == 201) {
 				    	        						Cookies.set('NU-Audi-Events', value, { expires: 365 });
@@ -267,6 +272,7 @@
 		faculty_login_button.addEventListener("click", loginFaculty);
 
 	function loginFaculty() {
+		document.getElementById("card_progress_bar").innerHTML = "<div id=\"card_progress_bar\" class=\"progress\"> <div class=\"indeterminate\"></div></div>"
 		var email = document.getElementById("faculty_email").value;
 		var passw = document.getElementById("faculty_passw").value;
 		var url = 'http://127.0.0.1:5000/oauth/faculty';
@@ -281,8 +287,13 @@
 		request.responseType = 'text';
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.onload = function() {
+			document.getElementById("card_progress_bar").innerHTML = "";
 			var response = JSON.parse(request.responseText);
 			console.log(response);
+			if (response["status_code"] == 201) {
+				Cookies.set('NU-Audi-Events', value, { expires: 365 });
+				window.location = "./app/u/authenticate/faculty/dashboard.html";
+			}
 		}
 		request.send(params);
 	}
