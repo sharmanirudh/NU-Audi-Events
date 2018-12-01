@@ -256,7 +256,9 @@
 			console.log(document.getElementById("faculty_email").value);
 			console.log(response["email"] == document.getElementById("faculty_email").value);
 			if (response["email"] == document.getElementById("faculty_email").value) {
+				console.log("Faculty Exists");
 				Cookies.set('NU-Audi-Events', response["idToken"], { expires: 365 });
+				debugger;
 				window.location = "./app/u/authenticate/faculties/dashboard.html?email=" + response["email"];
 			}
 		}
