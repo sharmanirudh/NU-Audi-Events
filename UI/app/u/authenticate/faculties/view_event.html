@@ -178,7 +178,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./dashboard.html">Online Events</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#!">VIEW EVENT</a>
         <!-- Form -->
         <!-- <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
@@ -195,12 +195,12 @@
           <li class="nav-item dropdown">
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
+                <div class="media-body mr-2 d-none d-lg-block">
+                  <span id="student_name" class="mb-0 text-sm  font-weight-bold"></span>
+                </div>
                 <span id="student_image_2" class="avatar avatar-sm rounded-circle">
                   
                 </span>
-                <div class="media-body ml-2 d-none d-lg-block">
-                  <span id="student_name" class="mb-0 text-sm  font-weight-bold"></span>
-                </div>
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
@@ -247,10 +247,10 @@
                 <div class="indeterminate"></div>
               </div>
             </div>
-            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-0">
-              <div class="d-flex justify-content-between">
-                <span id="event_date" class="badge badge-info col-xs-12"></span>
-                <span id="event_time" class="badge badge-info col-xs-12"></span>
+            <div class="container-fluid card-header text-center border-0 pt-3 pt-md-4 pb-0 pb-md-0 pl-4 pr-4">
+              <div class="row d-flex justify-content-between">
+                <span id="event_date" class="badge badge-info col-xs-12 col-sm-5 col-md-6 col-lg-4 col-12"></span>
+                <span id="event_time" class="badge badge-info col-xs-12 col-sm-3 col-md-3 col-12"></span>
               </div>
             </div>
             <div class="card-body pt-0 pt-md-4">
@@ -334,6 +334,40 @@
   <script src="../../../../assets/js/argon.js?v=1.0.0"></script>
 </body>
 <script type="text/javascript">
+  (function() {
+    var params = 'value=' + Cookies.get()["NU-Audi-Events"];
+    console.log(params);
+    var url = 'http://127.0.0.1:5000/students/profile';
+    var request = null;
+    if (window.XMLHttpRequest) {
+      request = new XMLHttpRequest();
+    } else {
+      request = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    request.open('POST', url, true);
+    request.responseType = 'text';
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    request.onload = function() {
+      var response = JSON.parse(request.responseText);
+      console.log(response);
+      if (response["status_code"] == 200) {
+        renderUserProfileHTML(response["text"]);
+        // console.log(response["text"]);
+        // console.log(response["text"][0]);
+        // console.log(response["text"][1]);
+        // console.log(response["text"][1].name);
+      }
+    }
+    request.send(params);
+  }());
+
+  function renderUserProfileHTML(profile) {
+    document.getElementById("student_name").innerHTML = profile["name"];
+    document.getElementById("student_image_1").innerHTML = "<img alt=\"Image placeholder\" src=\"" + profile["image_url"] + "\">";
+    document.getElementById("student_image_2").innerHTML = "<img alt=\"Image placeholder\" src=\"" + profile["image_url"] + "\">";
+  }
+
   function parseTime(string) {
     var dt  = string.split(/\-|\s/);
     var date = new Date(dt.slice(0,3).reverse().join('/')+' '+dt[3]);

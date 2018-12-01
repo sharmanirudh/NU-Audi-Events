@@ -1,5 +1,5 @@
 if (Cookies.get('NU-Audi-Events') == undefined) {
-	if (window.location != "https://sharmanirudh.github.io/NU-Audi-Events/login.html")
+	if (window.location != "http://localhost/nu-audi/login.html")
 		window.location = "./login.html";
 }
 else {
@@ -22,7 +22,7 @@ else {
 		console.log(response["text"]);
 		if (response["text"].localeCompare("Valid cookie.") == 0) {
 			console.log("Valid Response on comparison");
-			if (window.location.href == "https://sharmanirudh.github.io/NU-Audi-Events/" || window.location.href == "https://sharmanirudh.github.io/NU-Audi-Events/login.html")
+			if (window.location.href == "http://localhost/nu-audi/" || window.location.href == "http://localhost/nu-audi/login.html")
 				window.location = "./index.html";
 		}
 		else {

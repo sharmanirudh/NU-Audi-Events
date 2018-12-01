@@ -8,6 +8,8 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/login.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="google-signin-client_id" content="1059501399871-hpvsopqhq9ftso9nqjhfc52oqpbq5kft.apps.googleusercontent.com">
+	<meta name="google-signin-cookiepolicy" content="single_host_origin">
+	<meta name="google-signin-scope" content="profile email">
 	<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 	<script src="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.js"></script>
 	<link rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.css" />
@@ -15,116 +17,6 @@
 	<script src="assets/js/validate-login.js"></script>
 </head>
 <body id="background">
-	<script type="text/javascript">
-  // 	var config = {
-  //   	apiKey: "AIzaSyAaM8GmCDn5s6uqXiHJGjyvvYMhceXRdUE",
-  //   	authDomain: "nu-audi-01.firebaseapp.com",
-  //   	databaseURL: "https://nu-audi-01.firebaseio.com",
-  //   	projectId: "nu-audi-01",
-  //   	storageBucket: "nu-audi-01.appspot.com",
-  //   	messagingSenderId: "1059501399871"/*,
-  //   	clientId: "1059501399871-hpvsopqhq9ftso9nqjhfc52oqpbq5kft.apps.googleusercontent.com",
-  //   	scopes: [
-  //      	"email",
-  //      	"profile"
-	 //    ]*/
-  //   };
-  //   firebase.initializeApp(config);
-		// // FirebaseUI config.
-  //   var uiConfig = {
-  //     callbacks: {
-  //       signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-  //         var user = authResult.user;
-  //         var credential = authResult.credential;
-  //         var isNewUser = authResult.additionalUserInfo.isNewUser;
-  //         var providerId = authResult.additionalUserInfo.providerId;
-  //         var operationType = authResult.operationType;
-  //         console.log(user);
-  //         // Do something with the returned AuthResult.
-  //         // Return type determines whether we continue the redirect automatically
-  //         // or whether we leave that to developer to handle.
-  //         return true;
-  //       },
-  //       signInFailure: function(error) {
-  //         // Some unrecoverable error occurred during sign-in.
-  //         // Return a promise when error handling is completed and FirebaseUI
-  //         // will reset, clearing any UI. This commonly occurs for error code
-  //         // 'firebaseui/anonymous-upgrade-merge-conflict' when merge conflict
-  //         // occurs. Check below for more details on this.
-  //         return handleUIError(error);
-  //       },
-  //       uiShown: function() {
-  //         // The widget is rendered.
-  //         // Hide the loader.
-  //         document.getElementById('loader').style.display = 'none';
-  //       }
-  //     },
-  //     credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM,
-  //     // Query parameter name for mode.
-  //     queryParameterForWidgetMode: 'mode',
-  //     // Query parameter name for sign in success url.
-  //     queryParameterForSignInSuccessUrl: 'signInSuccessUrl',
-  //     // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-  //     signInFlow: 'popup',
-  //     signInSuccessUrl: '<url-to-redirect-to-on-success>',
-  //     signInOptions: [
-  //       // Leave the lines as is for the providers you want to offer your users.
-  //       firebase.auth.GoogleAuthProvider.PROVIDER_ID
-  //     ],
-  //     // tosUrl and privacyPolicyUrl accept either url string or a callback
-  //     // function.
-  //     // Terms of service url/callback.
-  //     tosUrl: '<your-tos-url>',
-  //     // Privacy policy url/callback.
-  //     privacyPolicyUrl: function() {
-  //       window.location.assign('<your-privacy-policy-url>');
-  //     }
-  //   };
-
-  //   var ui = new firebaseui.auth.AuthUI(firebase.auth());
-  //   // The start method will wait until the DOM is loaded.
-  //   ui.start('#firebaseui-auth-container', uiConfig);
-
-  //   initApp = function() {
-  //     firebase.auth().onAuthStateChanged(function(user) {
-  //       if (user) {
-  //         // User is signed in.
-  //         var displayName = user.displayName;
-  //         var email = user.email;
-  //         var emailVerified = user.emailVerified;
-  //         var photoURL = user.photoURL;
-  //         var uid = user.uid;
-  //         var phoneNumber = user.phoneNumber;
-  //         var providerData = user.providerData;
-  //         user.getIdToken().then(function(accessToken) {
-  //           document.getElementById('sign-in-status').textContent = 'Signed in';
-  //           document.getElementById('sign-in').textContent = 'Sign out';
-  //           document.getElementById('account-details').textContent = JSON.stringify({
-  //             displayName: displayName,
-  //             email: email,
-  //             emailVerified: emailVerified,
-  //             phoneNumber: phoneNumber,
-  //             photoURL: photoURL,
-  //             uid: uid,
-  //             accessToken: accessToken,
-  //             providerData: providerData
-  //           }, null, '  ');
-  //         });
-  //       } else {
-  //         // User is signed out.
-  //         document.getElementById('sign-in-status').textContent = 'Signed out';
-  //         document.getElementById('sign-in').textContent = 'Sign in';
-  //         document.getElementById('account-details').textContent = 'null';
-  //       }
-  //     }, function(error) {
-  //       console.log(error);
-  //     });
-  //   };
-
-  //   window.addEventListener('load', function() {
-  //     initApp()
-  //   });
-	</script>
 	<div id="container">
 		<div id="idcard_background"></div>
 		<div id="phone_idcard" class="swing_image"></div>
@@ -153,101 +45,176 @@
 				    <div id="sign-in"></div>
 				    <div id="account-details"></div>
 			    	<div id="loader">Loading...</div> -->
-					<div id="my-signin2" class="google_sign_in"></div>
-					  	<script>
-						    function onSuccess(googleUser) {
-						    	document.getElementById("card_progress_bar").innerHTML = "<div id=\"card_progress_bar\" class=\"progress\"> <div class=\"indeterminate\"></div></div>"
-						    	var profile = googleUser.getBasicProfile();
-						    	var id_token = googleUser.getAuthResponse().id_token;
-				    	        console.log("ID Token: " + id_token);
-				    	        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-				    	        console.log('Full Name: ' + profile.getName());
-				    	        console.log('Given Name: ' + profile.getGivenName());
-				    	        console.log('Family Name: ' + profile.getFamilyName());
-				    	        console.log("Image URL: " + profile.getImageUrl());
-				    	        console.log("Email: " + profile.getEmail());
-				    	        // image_url = encodeURIComponent(profile.getImageUrl()).replace(/\./g, '%2E');
-				    	        // console.log(image_url);
-				    	        var url = 'http://127.0.0.1:5000/oauth/student';
-				    	        var params = 'email=' + profile.getEmail() + '&name=' + profile.getName() + '&mac=' + 'AB:06:4F:23:B1:AB' + '&image_url=' + profile.getImageUrl() + '&id_token=' + id_token;
-				    	        var request = null;
-				    	        if (window.XMLHttpRequest) {
-				    	            request = new XMLHttpRequest();
-				    	        } else {
-				    	            request = new ActiveXObject("Microsoft.XMLHTTP");
-				    	        }
-				    	        request.open('POST', url, true);
-				    	        request.responseType = 'text';
-				    	        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					<div id="my-signin2" class="google_sign_in" onclick="renderButton()"></div>
+					<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+				  	<script>
+				  		// Initialize Firebase
+						var config = {
+							apiKey: "AIzaSyAaM8GmCDn5s6uqXiHJGjyvvYMhceXRdUE",
+							authDomain: "nu-audi-01.firebaseapp.com",
+							databaseURL: "https://nu-audi-01.firebaseio.com",
+							projectId: "nu-audi-01",
+							storageBucket: "nu-audi-01.appspot.com",
+							messagingSenderId: "1059501399871"
+						};
+						firebase.initializeApp(config);
+				  		
+				  		function isUserEqual(googleUser, firebaseUser) {
+				  		  	if (firebaseUser) {
+				  		    var providerData = firebaseUser.providerData;
+				  		    for (var i = 0; i < providerData.length; i++) {
+				  		      	if (providerData[i].providerId === firebase.auth.GoogleAuthProvider.PROVIDER_ID && providerData[i].uid === googleUser.getBasicProfile().getId()) {
+				  		        	// We don't need to reauth the Firebase connection.
+				  		        	return true;
+				  		      	}
+				  		    }
+				  		  }
+				  		  return false;
+				  		}
 
-				    	        request.onload = function() {
-				    	        	var response = JSON.parse(request.responseText);
-				    	        	console.log(response);
-				    	        	if (response["status_code"] == 303) {
-				    	        		var session_id = Math.random().toString(36).substring(2, 8) + Math.random().toString(36).substring(2, 9);//13 bits long unique string
-				    	        		var value = id_token + ":" + session_id;
-				    	        		console.log(value);
-				    	        		var url = 'http://127.0.0.1:5000/encrypt';
-				    	        		var params = 'text=' + value;
-				    	        		var request2 = null;
-				    	        		if (window.XMLHttpRequest) {
-				    	        		    request2 = new XMLHttpRequest();
-				    	        		} else {
-				    	        		    request2 = new ActiveXObject("Microsoft.XMLHTTP");
-				    	        		}
-				    	        		request2.open('POST', url, true);
-				    	        		request2.responseType = 'text';
-				    	        		request2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-				    	        		request2.onload = function() {
-				    	        			var response = JSON.parse(request2.responseText);
-				    	        			if (response["status_code"] == 200) {
-				    	        				value = response["text"];
-				    	        				console.log(value);
-				    	        				var url = 'http://127.0.0.1:5000/set-cookie';
-				    	        				var params = 'value=' + value;
-				    	        				var request3 = null;
-				    	        				if (window.XMLHttpRequest) {
-				    	        				    request3 = new XMLHttpRequest();
-				    	        				} else {
-				    	        				    request3 = new ActiveXObject("Microsoft.XMLHTTP");
-				    	        				}
-				    	        				request3.open('POST', url, true);
-				    	        				request3.responseType = 'text';
-				    	        				request3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-				    	        				request3.onload = function() {
-				    	        					document.getElementById("card_progress_bar").innerHTML = "";
-				    	        					var response = JSON.parse(request3.responseText);
-				    	        					if (response["status_code"] == 201) {
-				    	        						Cookies.set('NU-Audi-Events', value, { expires: 365 });
-				    	        						window.location = "./";
-				    	        					}
-				    	        				}
-				    	        				request3.send(params);
-				    	        			}
-				    	        		}
-				    	        		request2.send(params);
-				    	        	}
-				    	        }
-				    	        request.send(params);
-						    }
-						    function onFailure(error) {
-						      	console.log(error);
-						    }
-						    function renderButton() {
-						      	gapi.signin2.render('my-signin2', {
-							        'scope': 'profile email',
-							        'width': 153.6,
-							        'height': 32,
-							        'longtitle': true,
-							        'theme': 'dark',
-							        'onsuccess': onSuccess,
-							        'onfailure': onFailure,
-						      	});
-						    }
-					  	</script>
 
-					  	<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+				  		function signInFirebase(googleUser) {
+				  			// We need to register an Observer on Firebase Auth to make sure auth is initialized.
+			  			  	var unsubscribe = firebase.auth().onAuthStateChanged(function(firebaseUser) {
+			  			    	unsubscribe();
+			  			    // Check if we are already signed-in Firebase with the correct user.
+				  			    if (!isUserEqual(googleUser, firebaseUser)) {
+				  			      // Build Firebase credential with the Google ID token.
+				  			      	var credential = firebase.auth.GoogleAuthProvider.credential(
+				  			          googleUser.getAuthResponse().id_token);
+				  			      // Sign in with credential from the Google user.
+				  			      	firebase.auth().signInAndRetrieveDataWithCredential(credential).catch(function(error) {
+					  			        // Handle Errors here.
+					  			        var errorCode = error.code;
+					  			        var errorMessage = error.message;
+					  			        // The email of the user's account used.
+					  			        var email = error.email;
+					  			        // The firebase.auth.AuthCredential type that was used.
+					  			        var credential = error.credential;
+					  			        // ...
+					  			        console.log("signInFirebase - {" + errorCode + " => " + errorMessage + "}");
+				  			      	});
+				  			    } else {
+				  			      	console.log('User already signed-in Firebase.');
+				  			    }
+				  			  });
+				  		}
 
+
+					    function onSuccess(googleUser) {
+					    	var hosted_domain = googleUser.getHostedDomain();
+				  			console.log("Used hosted_domain = " + hosted_domain);
+				  			if(hosted_domain == "st.niituniversity.in") {
+  						    	signInFirebase(googleUser);
+  						    	document.getElementById("card_progress_bar").innerHTML = "<div id=\"card_progress_bar\" class=\"progress\"> <div class=\"indeterminate\"></div></div>"
+  						    	var profile = googleUser.getBasicProfile();
+  						    	var id_token = googleUser.getAuthResponse().id_token;
+  				    	        console.log("ID Token: " + id_token);
+  				    	        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+  				    	        console.log('Full Name: ' + profile.getName());
+  				    	        console.log('Given Name: ' + profile.getGivenName());
+  				    	        console.log('Family Name: ' + profile.getFamilyName());
+  				    	        console.log("Image URL: " + profile.getImageUrl());
+  				    	        console.log("Email: " + profile.getEmail());
+  				    	        // image_url = encodeURIComponent(profile.getImageUrl()).replace(/\./g, '%2E');
+  				    	        // console.log(image_url);
+  				    	        var url = 'http://127.0.0.1:5000/oauth/student';
+  				    	        var params = 'email=' + profile.getEmail() + '&name=' + profile.getName() + '&mac=' + 'AB:06:4F:23:B1:AB' + '&image_url=' + profile.getImageUrl() + '&id_token=' + id_token;
+  				    	        var request = null;
+  				    	        if (window.XMLHttpRequest) {
+  				    	            request = new XMLHttpRequest();
+  				    	        } else {
+  				    	            request = new ActiveXObject("Microsoft.XMLHTTP");
+  				    	        }
+  				    	        request.open('POST', url, true);
+  				    	        request.responseType = 'text';
+  				    	        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+  				    	        request.onload = function() {
+  				    	        	var response = JSON.parse(request.responseText);
+  				    	        	console.log(response);
+  				    	        	if (response["status_code"] == 303) {
+  				    	        		var session_id = Math.random().toString(36).substring(2, 8) + Math.random().toString(36).substring(2, 9);//13 bits long unique string
+  				    	        		var value = id_token + ":" + session_id;
+  				    	        		console.log(value);
+  				    	        		var url = 'http://127.0.0.1:5000/encrypt';
+  				    	        		var params = 'text=' + value;
+  				    	        		var request2 = null;
+  				    	        		if (window.XMLHttpRequest) {
+  				    	        		    request2 = new XMLHttpRequest();
+  				    	        		} else {
+  				    	        		    request2 = new ActiveXObject("Microsoft.XMLHTTP");
+  				    	        		}
+  				    	        		request2.open('POST', url, true);
+  				    	        		request2.responseType = 'text';
+  				    	        		request2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  				    	        		request2.onload = function() {
+  				    	        			var response = JSON.parse(request2.responseText);
+  				    	        			if (response["status_code"] == 200) {
+  				    	        				value = response["text"];
+  				    	        				console.log(value);
+  				    	        				var url = 'http://127.0.0.1:5000/set-cookie';
+  				    	        				var params = 'value=' + value;
+  				    	        				var request3 = null;
+  				    	        				if (window.XMLHttpRequest) {
+  				    	        				    request3 = new XMLHttpRequest();
+  				    	        				} else {
+  				    	        				    request3 = new ActiveXObject("Microsoft.XMLHTTP");
+  				    	        				}
+  				    	        				request3.open('POST', url, true);
+  				    	        				request3.responseType = 'text';
+  				    	        				request3.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  				    	        				request3.onload = function() {
+  				    	        					document.getElementById("card_progress_bar").innerHTML = "";
+  				    	        					var response = JSON.parse(request3.responseText);
+  				    	        					if (response["status_code"] == 201) {
+  				    	        						Cookies.set('NU-Audi-Events', value, { expires: 365 });
+  				    	        							window.location = "./";
+  				    	        					}
+  				    	        				}
+  				    	        				request3.send(params);
+  				    	        			}
+  				    	        		}
+  				    	        		request2.send(params);
+  				    	        	}
+  				    	        }
+  				    	        request.send(params);
+				  			}
+				  			else {
+				  				alert("You can only login using st.niituniversity.in email address.");
+				  				onFailure("Can't login due to a non-supported domain.");
+				  			}
+					    	
+					    }
+					    
+					    function onFailure(error) {
+					      	console.log(error);
+					      	logout();
+					    }
+					    
+					    function renderButton() {
+
+					      	gapi.signin2.render('my-signin2', {
+						        'scope': 'profile email',
+						        'width': 153.6,
+						        'height': 32,
+						        'longtitle': true,
+						        'theme': 'dark',
+						        'onsuccess': onSuccess,
+						        'onfailure': onFailure,
+					      	});
+					    }
+
+					    function logout() {
+					      	firebase.auth().signOut().then(function() {
+					        	// Sign-out successful.
+						        Cookies.remove("NU-Audi Events");
+						        window.location = '.';
+					      	}).catch(function(error) {
+					        // An error happened.
+					      	});
+					    }
+				  	</script>
 				</div>
 				<div class="divider"></div>
 				<div id="faculty_login">

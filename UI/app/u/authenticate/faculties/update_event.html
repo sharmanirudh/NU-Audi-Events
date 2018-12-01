@@ -179,7 +179,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./dashboard.html">Online Events</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#!">Update Event</a>
         <!-- Form -->
         <!-- <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
@@ -196,12 +196,12 @@
           <li class="nav-item dropdown">
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
+                <div class="media-body mr-2 d-none d-lg-block">
+                  <span id="student_name" class="mb-0 text-sm  font-weight-bold"></span>
+                </div>
                 <span id="student_image_2" class="avatar avatar-sm rounded-circle">
                   
                 </span>
-                <div class="media-body ml-2 d-none d-lg-block">
-                  <span id="student_name" class="mb-0 text-sm  font-weight-bold"></span>
-                </div>
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
@@ -286,39 +286,84 @@
                   </div>
                   <div class="row">
                     <div class="col-lg-11">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-event-start-date">Event start date</label>
-                        <div class="input-group input-group-alternative">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                      <div class="input-daterange datepicker row align-items-center">
+                        <div class="col">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-event-start-date">Event start date</label>
+                            <div class="input-group input-group-alternative">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                              </div>
+                              <input id="input_event_start_date" class="form-control" placeholder="Start date" type="text">
+                            </div>
                           </div>
-                          <input id="input_event_start_date" class="form-control datepicker" placeholder="Select date" type="text">
+                        </div>
+                        <div class="col">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-event-end-date">Event end date</label>
+                            <div class="input-group input-group-alternative">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                              </div>
+                              <input id="input_event_end_date" class="form-control" placeholder="End date" type="text">
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                     <div class="col-lg-11">
-                        <div class="form-group">
-                        <label class="form-control-label" for="input-event-end-date">Event end date</label>
-                        <div class="input-group input-group-alternative">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                    <div class="col-lg-11">
+                      <div class="row align-items-center">
+                        <div class="col">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-event-start-time">Event start time</label>
+                            <div class="input-group input-group-alternative">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ni ni-time-alarm"></i></span>
+                              </div>
+                              <input id="input_event_start_time" class="form-control" type="time">
+                            </div>
                           </div>
-                          <input id="input_event_end_date" class="form-control datepicker" placeholder="Select date" type="text">
+                        </div>
+                        <div class="col">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-event-end-time">Event end time</label>
+                            <div class="input-group input-group-alternative">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ni ni-time-alarm"></i></span>
+                              </div>
+                              <input id="input_event_end_time" class="form-control" type="time">
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                     <div class="col-lg-11">
-                        <div class="form-group">
-                        <label class="form-control-label" for="input-attendance-start-time">Attendance start time</label>
-                        <div class="input-group input-group-alternative">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                    <div class="col-lg-11">
+                      <div class="row align-items-center">
+                        <div class="col">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-attendance-start-time">Attendance start time</label>
+                            <div class="input-group input-group-alternative">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ni ni-time-alarm"></i></span>
+                              </div>
+                              <input id="input_attendance_start_time" class="form-control" type="time">
+                            </div>
                           </div>
-                          <input id="input_attendance_start_time" class="form-control datepicker" placeholder="Select date" type="text">
+                        </div>
+                        <div class="col">
+                          <div class="form-group focused">
+                            <label class="form-control-label" for="input-attendance-end-time">Attendance end time</label>
+                            <div class="input-group input-group-alternative">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ni ni-time-alarm"></i></span>
+                              </div>
+                              <input id="input_attendance_end_time" class="form-control" type="time">
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -394,6 +439,8 @@
   <!-- Core -->
   <script src="../../../../assets/vendor/jquery/dist/jquery.min.js"></script>
   <script src="../../../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Optional JS -->
+  <script src="../../../../assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
   <!-- Argon JS -->
   <script src="../../../../assets/js/argon.js?v=1.0.0"></script>
 </body>
@@ -438,6 +485,18 @@
     return date;
   }
 
+  function joinDateAndTime(date, time) {
+    var regex = /[/]/gi;
+    var newDate = new Date(date + " " + time + ":00");
+    console.log(newDate);
+    var dd = newDate.getDate() < 10 ? "0" + newDate.getDate() : newDate.getDate();
+    var mm = (newDate.getMonth() + 1) < 10 ? "0" + (newDate.getMonth() + 1): newDate.getMonth() + 1;
+    var yyyy = newDate.getFullYear();
+    var timestamp = dd  + "-" + mm + "-" + yyyy + " " + time + ":00";
+    console.log(timestamp);
+    return timestamp;
+  }
+
   function getQueryStringValue (key) {  
     return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
   }
@@ -467,20 +526,24 @@
   })();
 
   function renderEventDetailsHTML(eventDetails) {
-    var attendanceEndTime = eventDetails["attendance_end_time"];
-    var attendanceStartTime = eventDetails["attendance_start_time"];
+    var attendanceEndTime = parseTime(eventDetails["attendance_end_time"]);
+    var attendanceStartTime = parseTime(eventDetails["attendance_start_time"]);
     var attendees = eventDetails["attendees"];
     console.log(attendees);
-    var eventEndTime = eventDetails["event_end_time"];
-    var eventStartTime = eventDetails["event_start_time"];
+    var eventEndTime = parseTime(eventDetails["event_end_time"]);
+    var eventStartTime = parseTime(eventDetails["event_start_time"]);
     var key = eventDetails["key"];
     var name = eventDetails["name"];
     var speaker = eventDetails["speaker"];
     var summary = eventDetails["summary"];
-    document.getElementById("input_event_end_date").value = eventEndTime;
-    document.getElementById("input_attendance_start_time").value = attendanceStartTime;
-    document.getElementById("input_event_end_date").value = eventEndTime;
-    document.getElementById("input_event_start_date").value = eventStartTime;
+    document.getElementById("input_event_end_date").placeholder = eventEndTime.toLocaleDateString('en-US');
+    document.getElementById("input_event_start_date").placeholder = eventStartTime.toLocaleDateString('en-US');
+    document.getElementById("input_event_end_date").value = eventEndTime.toLocaleDateString('en-US');
+    document.getElementById("input_event_start_date").value = eventStartTime.toLocaleDateString('en-US');
+    document.getElementById("input_event_end_time").value = eventEndTime.toLocaleTimeString();
+    document.getElementById("input_event_start_time").value = eventStartTime.toLocaleTimeString();
+    document.getElementById("input_attendance_end_time").value = attendanceEndTime.toLocaleTimeString();
+    document.getElementById("input_attendance_start_time").value = attendanceStartTime.toLocaleTimeString();
     document.getElementById("input_event_name").value = name;
     document.getElementById("input_speaker_name").value = speaker;
     document.getElementById("input_summary").value = summary;
@@ -504,11 +567,13 @@
 
   function updateEvent(eventKey) {
     document.getElementById("card_progress_bar").innerHTML = "<div id=\"card_progress_bar\" class=\"progress\"> <div class=\"indeterminate\"></div></div>";
-    var attendanceEndTime = document.getElementById("input_event_end_date").value;
+    var attendanceEndTime = document.getElementById("input_attendance_end_time").value;
     var attendanceStartTime = document.getElementById("input_attendance_start_time").value;
     var name = document.getElementById("input_event_name").value;
-    var eventEndTime = document.getElementById("input_event_end_date").value;
-    var eventStartTime = document.getElementById("input_event_start_date").value;
+    var eventEndTime = document.getElementById("input_event_end_time").value;
+    var eventStartTime = document.getElementById("input_event_start_time").value;
+    var eventEndDate = document.getElementById("input_event_end_date").value;
+    var eventStartDate = document.getElementById("input_event_start_date").value;
     var speaker = document.getElementById("input_speaker_name").value;
     var summary = document.getElementById("input_summary").value;
     var attendees = "";
@@ -517,7 +582,7 @@
     for (var i = 0; i < el_attendee_tr.length; i++)
       attendees += el_attendee_tr[i].id + ";";
     console.log(attendees);
-    var params = 'attendance_end_time=' + attendanceEndTime + '&attendance_start_time=' + attendanceStartTime + '&name=' + name + '&eventEndTime=' + eventEndTime + '&eventStartTime=' + eventStartTime + '&speaker=' + speaker + '&summary=' + summary + '&attendees=' + attendees + '&key=' + eventKey;
+    var params = 'attendance_end_time=' + joinDateAndTime(eventStartDate, attendanceEndTime) + '&attendance_start_time=' + joinDateAndTime(eventStartDate, attendanceStartTime) + '&name=' + name + '&event_end_time=' + joinDateAndTime(eventEndDate, eventEndTime) + '&event_start_time=' + joinDateAndTime(eventStartDate, eventStartTime) + '&speaker=' + speaker + '&summary=' + summary + '&attendees=' + attendees + '&key=' + eventKey;
     console.log(params);
     var request = null;
     if (window.XMLHttpRequest) {
@@ -533,7 +598,7 @@
       var response = JSON.parse(request.responseText);
       console.log(response);
       if (response["status_code"] == 200)
-        window.location = "./create_event.html";
+        // window.location = "./view_event.html?e=" + eventKey;
       var response = JSON.parse(request.responseText);
     }
     request.send(params);

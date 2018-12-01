@@ -21,10 +21,12 @@ else {
 		console.log(response);
 		console.log(response["text"]);
 		if (response["text"].localeCompare("Valid cookie.") == 0) {
-			if (window.location.href == "http://localhost/nu-audi/")
+			console.log("Valid Response on comparison");
+			if (window.location.href == "http://localhost/nu-audi/" || window.location.href == "http://localhost/nu-audi/login.html")
 				window.location = "./index.html";
 		}
 		else {
+			console.log("Invalid response on comparison");
 			Cookies.remove("NU-Audi-Events");
 			window.location = "./login.html";
 		}
