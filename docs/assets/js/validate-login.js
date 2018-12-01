@@ -1,19 +1,19 @@
 var GITHUB_DOMAIN = "nu-audi-events.anirudhsharma.in";
 console.log("Validate js");
 var API_DOMAIN = "https://nu-audi-events.herokuapp.com";
-if (Cookies.get('NU-Audi-Events') == undefined) {
-	console.log("1");
-	console.log("window.location   " + window.location);
-	console.log(GITHUB_DOMAIN + "/login.html");
-	console.log(GITHUB_DOMAIN + "/");
-	console.log(window.location != GITHUB_DOMAIN + "/login.html");
-	debugger;
-	if (window.location != GITHUB_DOMAIN + "/login.html") {
-		console.log("2");
-		window.location = "./login.html";
-	}
-}
-else {
+// if (Cookies.get('NU-Audi-Events') == undefined) {
+// 	console.log("1");
+// 	console.log("window.location   " + window.location);
+// 	console.log(GITHUB_DOMAIN + "/login.html");
+// 	console.log(GITHUB_DOMAIN + "/");
+// 	console.log(window.location != GITHUB_DOMAIN + "/login.html");
+// 	debugger;
+// 	if (window.location != GITHUB_DOMAIN + "/login.html") {
+// 		console.log("2");
+// 		window.location = "./login.html";
+// 	}
+// }
+if (Cookies.get('NU-Audi-Events') != undefined) {
 	console.log(Cookies.get());
 	var url = API_DOMAIN + '/validate-cookie';
 	var params = 'value=' + Cookies.get()["NU-Audi-Events"];
