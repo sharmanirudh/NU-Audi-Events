@@ -175,7 +175,7 @@
   				    	        request.send(params);
 				  			}
 				  			else {
-				  				alert("You can only login using st.niituniversity.in email address.");
+				  				// alert("You can only login using st.niituniversity.in email address.");
 				  				onFailure("Can't login due to a non-supported domain.");
 				  			}
 					    	
@@ -203,7 +203,7 @@
 					      	firebase.auth().signOut().then(function() {
 					        	// Sign-out successful.
 						        Cookies.remove("NU-Audi Events");
-						        window.location = '.';
+						        // window.location = '.';
 					      	}).catch(function(error) {
 					        // An error happened.
 					      	});
