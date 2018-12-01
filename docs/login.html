@@ -253,7 +253,10 @@
 			document.getElementById("card_progress_bar").innerHTML = "";
 			var response = JSON.parse(request.responseText);
 			console.log(response);
-			if (response["status_code"] == 201) {
+			console.log(response["email"]);
+			console.log(document.getElementById("faculty_email").value);
+			console.log(response["email"] == document.getElementById("faculty_email").value);
+			if (response["email"] == document.getElementById("faculty_email").value) {
 				var session_id = Math.random().toString(36).substring(2, 8) + Math.random().toString(36).substring(2, 9);//13 bits long unique string
 				var value = id_token + ":" + session_id;
 				console.log(value);
