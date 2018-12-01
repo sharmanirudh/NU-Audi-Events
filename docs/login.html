@@ -163,7 +163,7 @@
   				    	        					var response = JSON.parse(request3.responseText);
   				    	        					if (response["status_code"] == 201) {
   				    	        						Cookies.set('NU-Audi-Events', value, { expires: 365 });
-  				    	        							window.location = "./";
+  				    	        							window.location = "./index.html";
   				    	        					}
   				    	        				}
   				    	        				request3.send(params);
@@ -257,7 +257,7 @@
 			console.log(response["email"] == document.getElementById("faculty_email").value);
 			if (response["email"] == document.getElementById("faculty_email").value) {
 				Cookies.set('NU-Audi-Events', response["idToken"], { expires: 365 });
-				window.location = "./app/u/authenticate/faculty/dashboard.html?email=" + response["email"];
+				window.location = "./app/u/authenticate/faculties/dashboard.html?email=" + response["email"];
 			}
 		}
 		request.send(params);
