@@ -330,7 +330,7 @@
   // let name = params.get("name");
 
   (function() {
-    var url = 'http://127.0.0.1:5000/events/' + getQueryStringValue("e");
+    var url = API_DOMAIN + '/events/' + getQueryStringValue("e");
     var request = null;
     if (window.XMLHttpRequest) {
       request = new XMLHttpRequest();

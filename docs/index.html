@@ -309,7 +309,7 @@
   (function() {
     var params = 'value=' + Cookies.get()["NU-Audi-Events"];
     console.log(params);
-    var url = 'http://127.0.0.1:5000/students/profile';
+    var url = API_DOMAIN + '/students/profile';
     var request = null;
     if (window.XMLHttpRequest) {
       request = new XMLHttpRequest();
@@ -341,7 +341,7 @@
   }
 
   (function() {
-    var url = 'http://127.0.0.1:5000/events/online-events';
+    var url = API_DOMAIN + '/events/online-events';
     var request = null;
     if (window.XMLHttpRequest) {
       request = new XMLHttpRequest();
@@ -456,7 +456,7 @@
   function markAttendance(eventKey, i) {
     var params = 'value=' + Cookies.get()["NU-Audi-Events"];
     console.log(params);
-    var url = 'http://127.0.0.1:5000/events/' + eventKey + '/mark-attendance';
+    var url = API_DOMAIN + '/events/' + eventKey + '/mark-attendance';
     var request = null;
     if (window.XMLHttpRequest) {
       request = new XMLHttpRequest();
@@ -500,7 +500,7 @@
     });
     var params = 'value=' + Cookies.get()["NU-Audi-Events"];
     console.log(params);
-    var url = 'http://127.0.0.1:5000/oauth/student/logout';
+    var url = API_DOMAIN + '/oauth/student/logout';
     var request = null;
     if (window.XMLHttpRequest) {
       request = new XMLHttpRequest();

@@ -112,7 +112,7 @@
   				    	        console.log("Email: " + profile.getEmail());
   				    	        // image_url = encodeURIComponent(profile.getImageUrl()).replace(/\./g, '%2E');
   				    	        // console.log(image_url);
-  				    	        var url = 'http://127.0.0.1:5000/oauth/student';
+  				    	        var url = API_DOMAIN + '/oauth/student';
   				    	        var params = 'email=' + profile.getEmail() + '&name=' + profile.getName() + '&mac=' + 'AB:06:4F:23:B1:AB' + '&image_url=' + profile.getImageUrl() + '&id_token=' + id_token;
   				    	        var request = null;
   				    	        if (window.XMLHttpRequest) {
@@ -131,7 +131,7 @@
   				    	        		var session_id = Math.random().toString(36).substring(2, 8) + Math.random().toString(36).substring(2, 9);//13 bits long unique string
   				    	        		var value = id_token + ":" + session_id;
   				    	        		console.log(value);
-  				    	        		var url = 'http://127.0.0.1:5000/encrypt';
+  				    	        		var url = API_DOMAIN + '/encrypt';
   				    	        		var params = 'text=' + value;
   				    	        		var request2 = null;
   				    	        		if (window.XMLHttpRequest) {
@@ -147,7 +147,7 @@
   				    	        			if (response["status_code"] == 200) {
   				    	        				value = response["text"];
   				    	        				console.log(value);
-  				    	        				var url = 'http://127.0.0.1:5000/set-cookie';
+  				    	        				var url = API_DOMAIN + '/set-cookie';
   				    	        				var params = 'value=' + value;
   				    	        				var request3 = null;
   				    	        				if (window.XMLHttpRequest) {
@@ -236,7 +236,7 @@
 		document.getElementById("card_progress_bar").innerHTML = "<div id=\"card_progress_bar\" class=\"progress\"> <div class=\"indeterminate\"></div></div>"
 		var email = document.getElementById("faculty_email").value;
 		var passw = document.getElementById("faculty_passw").value;
-		var url = 'http://127.0.0.1:5000/oauth/faculty';
+		var url = API_DOMAIN + '/oauth/faculty';
 		var params = 'email=' + email + '&passw=' + passw;
 		var request = null;
         if (window.XMLHttpRequest) {
