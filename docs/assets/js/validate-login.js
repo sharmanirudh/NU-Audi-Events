@@ -3,6 +3,11 @@ console.log("Validate js");
 var API_DOMAIN = "https://nu-audi-events.herokuapp.com";
 if (Cookies.get('NU-Audi-Events') == undefined) {
 	console.log("1");
+	console.log("window.location   " + window.location);
+	console.log(GITHUB_DOMAIN + "/login.html");
+	console.log(GITHUB_DOMAIN + "/");
+	console.log(window.location != GITHUB_DOMAIN + "/login.html" || window.location != GITHUB_DOMAIN + "/");
+
 	// if (window.location != GITHUB_DOMAIN + "/login.html" || window.location != GITHUB_DOMAIN + "/") {
 		console.log("2");
 		window.location = "./login.html";
