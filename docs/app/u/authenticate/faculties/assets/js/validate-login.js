@@ -1,8 +1,9 @@
-var GITHUB_DOMAIN = "nu-audi-events.anirudhsharma.in";
-var GITHUB_DOMAIN = "https://nu-audi-events.herokuapp.com";
+var GITHUB_DOMAIN = "http://nu-audi-events.anirudhsharma.in";
+console.log("fjabdfl");
+var API_DOMAIN = "https://nu-audi-events.herokuapp.com";
 if (Cookies.get('NU-Audi-Events') == undefined) {
 	console.log("Cookie undefined");
-	if (window.location != GITHUB_DOMAIN + "/nu-audi/login.html") {
+	if (window.location != GITHUB_DOMAIN + "/login.html") {
 		console.log("Redirecting to login page");
 		window.location = "/login.html";
 	}
@@ -26,7 +27,7 @@ else {
 		console.log(response);
 		console.log(response["text"]);
 		if (response["text"].localeCompare("Valid cookie.") == 0) {
-			if (window.location.href == GITHUB_DOMAIN + "/nu-audi/")
+			if (window.location.href == GITHUB_DOMAIN + "/")
 				window.location = "./app/u/authenticate/faculties/dashboard.html";
 		}
 		else {

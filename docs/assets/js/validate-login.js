@@ -1,7 +1,8 @@
-var GITHUB_DOMAIN = "nu-audi-events.anirudhsharma.in";
-var GITHUB_DOMAIN = "https://nu-audi-events.herokuapp.com";
+var GITHUB_DOMAIN = "http://nu-audi-events.anirudhsharma.in";
+console.log("Validate js");
+var API_DOMAIN = "https://nu-audi-events.herokuapp.com";
 if (Cookies.get('NU-Audi-Events') == undefined) {
-	if (window.location != GITHUB_DOMAIN + "/nu-audi/login.html" || window.location != GITHUB_DOMAIN + "/")
+	if (window.location != GITHUB_DOMAIN + "/login.html" || window.location != GITHUB_DOMAIN + "/")
 		window.location = "./login.html";
 }
 else {
