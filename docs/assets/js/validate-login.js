@@ -6,12 +6,12 @@ if (Cookies.get('NU-Audi-Events') == undefined) {
 	console.log("window.location   " + window.location);
 	console.log(GITHUB_DOMAIN + "/login.html");
 	console.log(GITHUB_DOMAIN + "/");
-	console.log(window.location != GITHUB_DOMAIN + "/login.html" || window.location != GITHUB_DOMAIN + "/");
+	console.log(window.location != GITHUB_DOMAIN + "/login.html");
 	debugger;
-	// if (window.location != GITHUB_DOMAIN + "/login.html" || window.location != GITHUB_DOMAIN + "/") {
+	if (window.location != GITHUB_DOMAIN + "/login.html") {
 		console.log("2");
 		window.location = "./login.html";
-	// }
+	}
 }
 else {
 	console.log(Cookies.get());
