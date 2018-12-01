@@ -506,7 +506,7 @@
       var response = JSON.parse(request.responseText);
       console.log(response);
       if (response["status_code"] == 201)
-        window.location = "./argon-dashboard-v1.0.0/examples/create_event.html";
+        window.location = ".dashboard.html";
       else if (response["status_code"] == 409)
         alert("No online event currently");
       console.log(response);
