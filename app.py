@@ -219,7 +219,7 @@ def manage_event():
 				e_json = getEventDetails(event.key()).json()
 				e_json.pop('attendees')
 				print(all_events_json.append(e_json))
-		return jsonify(utils.Response(status_code=200, text=all_events_json).json())		
+		return jsonify(utils.Response(status_code=200, text=all_events_json).json())
 
 	name = request.form.get('name')
 	speaker = request.form.get('speaker')
@@ -230,7 +230,6 @@ def manage_event():
 	attendance_end_time = request.form.get('attendance_end_time')
 	summary = request.form.get('summary')
 	attendees = request.form.get('attendees')
-	current_time = string_to_timestamp(timestamp_generator())
 	print(request.form);
 	if not (name or speaker or event_start_time or event_end_time or date or attendance_start_time or attendance_end_time):
 		return jsonify(utils.Response(status_code=422, text='Incomplete data to create/update new event').json())
@@ -243,20 +242,8 @@ def manage_event():
 	e = utils.Event(name, speaker, event_start_time, event_end_time, date, attendance_start_time, attendance_end_time, key, summary=summary)
 
 	if request.method == 'POST':
-		attendance_start_time = string_to_timestamp(attendance_start_time)
-		attendance_end_time = string_to_timestamp(attendance_end_time)
-		# current time lies b/w start and end time set event online
-		if max((current_time, attendance_start_time)) == current_time and max((attendance_end_time, current_time)) == attendance_end_time:
-			all_online_events = getAllOnlineEvents()
-			if all_online_events.each() != None:
-				return jsonify(utils.Response(status_code=409, text='Cannot create new event as an event already active.').json())
-			else:
-				makeNewEvent(e)
-				setEventOnline(key)
-				return jsonify(utils.Response(status_code=201, text='Event created and set online').json())
-		else:
-			makeNewEvent(e)
-			return jsonify(utils.Response(status_code=201, text='Event created').json())
+		makeNewEvent(e)
+		return jsonify(utils.Response(status_code=201, text='Event created').json())
 
 	if request.method == 'PUT':
 		key = request.form.get('key')
@@ -302,15 +289,21 @@ def get_event_details(key):
 def get_all_online_events():
 	all_online_events_json = []
 	if request.method == 'GET':
-		all_online_events = getAllOnlineEvents()
-		if all_online_events.each() != None:
-			print(all_online_events.val())
-			for event in all_online_events.each():
+		current_time = string_to_timestamp(timestamp_generator())
+		all_events = getAllEvents()
+		if all_events.each() != None:
+			print(all_events.val())
+			for event in all_events.each():
 				print(event.key())
 				print(event.val())
-				e_json = getEventDetails(event.key()).json()
-				e_json.pop('attendees')
-				print(all_online_events_json.append(e_json))
+				e = getEventDetails(event.key())
+				attendance_start_time = string_to_timestamp(e.attendance_start_time)
+				attendance_end_time = string_to_timestamp(e.attendance_end_time)
+				# current time lies b/w start and end time set event online
+				if max((current_time, attendance_start_time)) == current_time and max((attendance_end_time, current_time)) == attendance_end_time:
+					e_json = e.json()
+					print(all_online_events_json.append(e_json))
+					e_json.pop('attendees')
 	return jsonify(utils.Response(status_code=200, text=all_online_events_json).json())
 
 @app.route('/events/<key>/add-summary', methods=['PUT'])

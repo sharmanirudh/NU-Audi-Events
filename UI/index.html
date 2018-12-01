@@ -6,6 +6,10 @@
   <meta name="description" content="Expereince the whole new way to mark your presence!">
   <meta name="author" content="Anirudh Sharma">
   <title>NU Audi Events</title>
+  <meta name="google-signin-client_id" content="1059501399871-hpvsopqhq9ftso9nqjhfc52oqpbq5kft.apps.googleusercontent.com">
+  <meta name="google-signin-cookiepolicy" content="single_host_origin">
+  <meta name="google-signin-scope" content="profile email">
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
   <!-- Favicon -->
   <link href="assets/img/brand/favicon.png" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -478,7 +482,22 @@
     request.send(params);
   }
 
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAaM8GmCDn5s6uqXiHJGjyvvYMhceXRdUE",
+    authDomain: "nu-audi-01.firebaseapp.com",
+    databaseURL: "https://nu-audi-01.firebaseio.com",
+    projectId: "nu-audi-01",
+    storageBucket: "nu-audi-01.appspot.com",
+    messagingSenderId: "1059501399871"
+  };
+  firebase.initializeApp(config);
   function logout() {
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+    }).catch(function(error) {
+      // An error happened.
+    });
     var params = 'value=' + Cookies.get()["NU-Audi-Events"];
     console.log(params);
     var url = 'http://127.0.0.1:5000/oauth/student/logout';
