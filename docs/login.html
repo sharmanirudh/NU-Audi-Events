@@ -258,7 +258,7 @@
 			console.log(response["email"] == document.getElementById("faculty_email").value);
 			if (response["email"] == document.getElementById("faculty_email").value) {
 				var session_id = Math.random().toString(36).substring(2, 8) + Math.random().toString(36).substring(2, 9);//13 bits long unique string
-				var value = id_token + ":" + session_id;
+				var value = response["idToken"] + ":" + session_id;
 				console.log(value);
 				var url = API_DOMAIN + '/encrypt';
 				var params = 'text=' + value;
