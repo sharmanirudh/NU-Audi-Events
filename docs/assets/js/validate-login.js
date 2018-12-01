@@ -8,7 +8,7 @@ if (Cookies.get('NU-Audi-Events') == undefined) {
 	console.log(GITHUB_DOMAIN + "/login.html");
 	console.log(GITHUB_DOMAIN + "/");
 	console.log(window.location != GITHUB_DOMAIN + "/login.html");
-	debugger;
+	// debugger;
 	if (window.location.href != GITHUB_DOMAIN + "/login.html") {
 		console.log("2");
 		window.location = "./login.html";
