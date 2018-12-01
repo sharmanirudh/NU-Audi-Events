@@ -1,6 +1,9 @@
 if (Cookies.get('NU-Audi-Events') == undefined) {
-	if (window.location != "http://localhost/nu-audi/login.html")
-		window.location = "./login.html";
+	console.log("Cookie undefined");
+	if (window.location != "http://localhost/nu-audi/login.html") {
+		console.log("Redirecting to login page");
+		window.location = "/login.html";
+	}
 }
 else {
 	console.log(Cookies.get());
@@ -26,7 +29,7 @@ else {
 		}
 		else {
 			Cookies.remove("NU-Audi-Events");
-			window.location = "./login.html";
+			window.location = "/login.html";
 		}
 	}
 	request.send(params);
