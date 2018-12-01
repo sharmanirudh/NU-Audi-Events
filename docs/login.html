@@ -147,7 +147,7 @@
   				    	        			if (response["status_code"] == 200) {
   				    	        				value = response["text"];
   				    	        				console.log(value);
-  				    	        				var url = API_DOMAIN + '/set-cookie';
+  				    	        				var url = API_DOMAIN + '/set-student-cookie';
   				    	        				var params = 'value=' + value;
   				    	        				var request3 = null;
   				    	        				if (window.XMLHttpRequest) {
@@ -276,7 +276,7 @@
 					if (response["status_code"] == 200) {
 						value = response["text"];
 						console.log(value);
-						var url = API_DOMAIN + '/set-cookie';
+						var url = API_DOMAIN + '/set-faculty-cookie';
 						var params = 'value=' + value;
 						var request3 = null;
 						if (window.XMLHttpRequest) {
