@@ -375,7 +375,7 @@
   }
   // Get Querystring using javascript: https://stackoverflow.com/questions/9870512/how-to-obtain-the-query-string-from-the-current-url-with-javascript
   // Solution that work in legacy browsers as well
-  function getQueryStringValue (key) {  
+  function getQueryStringValue(key) {  
     return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
   }
   // In modern browsers
