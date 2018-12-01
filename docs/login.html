@@ -200,6 +200,7 @@
 					    }
 
 					    function logout() {
+					        Cookies.remove("NU-Audi Events");
 					      	firebase.auth().signOut().then(function() {
 					        	// Sign-out successful.
 						        Cookies.remove("NU-Audi Events");
