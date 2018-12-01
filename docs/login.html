@@ -248,17 +248,14 @@
 		request.open('POST', url, true);
 		request.responseType = 'text';
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
 		request.onload = function() {
-			request2.send(params);
 			document.getElementById("card_progress_bar").innerHTML = "";
 			var response = JSON.parse(request.responseText);
 			console.log(response);
-			console.log(response["email"]);
-			console.log(document.getElementById("faculty_email").value);
-			console.log(response["email"] == document.getElementById("faculty_email").value);
-			if (response["email"] == document.getElementById("faculty_email") {
+			if (response["status_code"] == 201) {
 				var session_id = Math.random().toString(36).substring(2, 8) + Math.random().toString(36).substring(2, 9);//13 bits long unique string
-				var value = response["idToken"] + ":" + session_id;
+				var value = id_token + ":" + session_id;
 				console.log(value);
 				var url = API_DOMAIN + '/encrypt';
 				var params = 'text=' + value;
@@ -292,12 +289,13 @@
 							var response = JSON.parse(request3.responseText);
 							if (response["status_code"] == 201) {
 								Cookies.set('NU-Audi-Events', value, { expires: 365 });
-									window.location = "./app/u/authenticate/faculties/dashboard.html?email=" + response["email"];
+								window.location = "./app/u/authenticate/faculties/dashboard.html?email=" + response["email"];
 							}
 						}
 						request3.send(params);
 					}
 				}
+				request2.send(params);
 			}
 		}
 		request.send(params);
