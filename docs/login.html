@@ -290,6 +290,7 @@
 						request3.onload = function() {
 							document.getElementById("card_progress_bar").innerHTML = "";
 							var response = JSON.parse(request3.responseText);
+							console.log(response);
 							if (response["status_code"] == 201) {
 								Cookies.set('NU-Audi-Events', value, { expires: 365 });
 								window.location = "./app/u/authenticate/faculties/dashboard.html?email=" + response["email"];
