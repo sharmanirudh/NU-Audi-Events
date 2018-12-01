@@ -331,7 +331,9 @@
   // }());
 
   function renderUserProfileHTML(/*profile*/) {
-    document.getElementById("student_name").innerHTML = getQueryStringValue("email").replace(".", " ");
+    var nameParts = getQueryStringValue("email").replace(".", " ").split("@");
+    var name = nameParts.length == 2 ? nameParts[0] : null;
+    document.getElementById("student_name").innerHTML = name;
     // document.getElementById("student_image_1").innerHTML = "<img alt=\"Image placeholder\" src=\"" + profile["image_url"] + "\">";
     // document.getElementById("student_image_2").innerHTML = "<img alt=\"Image placeholder\" src=\"" + profile["image_url"] + "\">";
   }
