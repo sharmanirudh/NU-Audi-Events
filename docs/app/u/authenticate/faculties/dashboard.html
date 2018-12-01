@@ -302,39 +302,40 @@
   <script src="../../../../assets/js/argon.js?v=1.0.0"></script>
 </body>
 <script type="text/javascript">
-  (function() {
-    var params = 'value=' + Cookies.get()["NU-Audi-Events"];
-    console.log(params);
-    var url = API_DOMAIN + '/students/profile';
-    var request = null;
-    if (window.XMLHttpRequest) {
-      request = new XMLHttpRequest();
-    } else {
-      request = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    request.open('POST', url, true);
-    request.responseType = 'text';
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  // (function() {
+  //   var params = 'value=' + Cookies.get()["NU-Audi-Events"];
+  //   console.log(params);
+  //   var url = API_DOMAIN + '/students/profile';
+  //   var request = null;
+  //   if (window.XMLHttpRequest) {
+  //     request = new XMLHttpRequest();
+  //   } else {
+  //     request = new ActiveXObject("Microsoft.XMLHTTP");
+  //   }
+  //   request.open('POST', url, true);
+  //   request.responseType = 'text';
+  //   request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-    request.onload = function() {
-      var response = JSON.parse(request.responseText);
-      console.log(response);
-      if (response["status_code"] == 200) {
-        renderUserProfileHTML(response["text"]);
-        // console.log(response["text"]);
-        // console.log(response["text"][0]);
-        // console.log(response["text"][1]);
-        // console.log(response["text"][1].name);
-      }
-    }
-    request.send(params);
-  }());
+  //   request.onload = function() {
+  //     var response = JSON.parse(request.responseText);
+  //     console.log(response);
+  //     if (response["status_code"] == 200) {
+  //       renderUserProfileHTML(response["text"]);
+  //       // console.log(response["text"]);
+  //       // console.log(response["text"][0]);
+  //       // console.log(response["text"][1]);
+  //       // console.log(response["text"][1].name);
+  //     }
+  //   }
+  //   request.send(params);
+  // }());
 
-  function renderUserProfileHTML(profile) {
+  function renderUserProfileHTML(/*profile*/) {
     document.getElementById("student_name").innerHTML = getQueryStringValue("email").replace(".", " ");
-    document.getElementById("student_image_1").innerHTML = "<img alt=\"Image placeholder\" src=\"" + profile["image_url"] + "\">";
-    document.getElementById("student_image_2").innerHTML = "<img alt=\"Image placeholder\" src=\"" + profile["image_url"] + "\">";
+    // document.getElementById("student_image_1").innerHTML = "<img alt=\"Image placeholder\" src=\"" + profile["image_url"] + "\">";
+    // document.getElementById("student_image_2").innerHTML = "<img alt=\"Image placeholder\" src=\"" + profile["image_url"] + "\">";
   }
+  renderUserProfileHTML();
 
   (function() {
     var url = API_DOMAIN + '/events/online-events';
