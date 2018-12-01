@@ -1,5 +1,5 @@
-//var GITHUB_DOMAIN = "nu-audi-events.anirudhsharma.in";
-var GITHUB_DOMAIN = "localhost:8000/nu-audi";
+var GITHUB_DOMAIN = "nu-audi-events.anirudhsharma.in";
+//var GITHUB_DOMAIN = "localhost:8000/nu-audi";
 console.log("Validate js");
 var API_DOMAIN = "https://nu-audi-events.herokuapp.com";
 // if (Cookies.get('NU-Audi-Events') == undefined) {
