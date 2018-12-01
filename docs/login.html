@@ -240,6 +240,7 @@
 		var url = API_DOMAIN + '/oauth/faculty';
 		var params = 'email=' + email + '&passw=' + passw;
 		var request = null;
+		var facultyEmail = null;
         if (window.XMLHttpRequest) {
             request = new XMLHttpRequest();
          } else {
@@ -257,6 +258,7 @@
 			console.log(document.getElementById("faculty_email").value);
 			console.log(response["email"] == document.getElementById("faculty_email").value);
 			if (response["email"] == document.getElementById("faculty_email").value) {
+				facultyEmail = response["email"];
 				var session_id = Math.random().toString(36).substring(2, 8) + Math.random().toString(36).substring(2, 9);//13 bits long unique string
 				var value = response["idToken"] + ":" + session_id;
 				console.log(value);
@@ -293,7 +295,7 @@
 							console.log(response);
 							if (response["status_code"] == 201) {
 								Cookies.set('NU-Audi-Events', value, { expires: 365 });
-								window.location = "./app/u/authenticate/faculties/dashboard.html?email=" + response["email"];
+								window.location = "./app/u/authenticate/faculties/dashboard.html?email=" + facultyEmail;
 							}
 						}
 						request3.send(params);
