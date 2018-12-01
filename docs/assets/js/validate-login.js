@@ -2,8 +2,11 @@ var GITHUB_DOMAIN = "http://nu-audi-events.anirudhsharma.in";
 console.log("Validate js");
 var API_DOMAIN = "https://nu-audi-events.herokuapp.com";
 if (Cookies.get('NU-Audi-Events') == undefined) {
-	if (window.location != GITHUB_DOMAIN + "/login.html" || window.location != GITHUB_DOMAIN + "/")
+	console.log("1");
+	if (window.location != GITHUB_DOMAIN + "/login.html" || window.location != GITHUB_DOMAIN + "/") {
+		console.log("2");
 		window.location = "./login.html";
+	}
 }
 else {
 	console.log(Cookies.get());
