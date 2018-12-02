@@ -492,7 +492,7 @@
     var dd = newDate.getDate() < 10 ? "0" + newDate.getDate() : newDate.getDate();
     var mm = (newDate.getMonth() + 1) < 10 ? "0" + (newDate.getMonth() + 1): newDate.getMonth() + 1;
     var yyyy = newDate.getFullYear();
-    var timestamp = dd  + "-" + mm + "-" + yyyy + " " + time + ":00";
+    var timestamp = dd  + "-" + mm + "-" + yyyy + " " + newDate.toLocaleTimeString();
     console.log(timestamp);
     return timestamp;
   }
